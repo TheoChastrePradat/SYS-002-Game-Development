@@ -1,0 +1,103 @@
+﻿id,statement,module,name,approved_turn,proposal_turn,decision
+CORE-001,Acteurs identifiés indépendamment de leurs définitions persistantes,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-002,Source et propriétaire explicitement distincts,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-003,"Capacités des acteurs configurables, notamment pour les Pals",SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-004,"Actions, opérations programmées et événements séparés",SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-005,Engagement d'une action distinct de ses impacts,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-006,"Annulation non rétroactive, avec résolution partielle possible",SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-007,Graphe causal acyclique avec actions parentes et événements déclencheurs,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-008,Événements de domaine immuables et traces diagnostiques séparées,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-009,Déduplication déclarée par mécanique,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-010,Identifiants et ordre d'exécution déterministes,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-011,Échéances invalidables par génération,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+CORE-012,Version de configuration figée par combat,SYS-002.D.13.1,"Combat Actor, Action & Event Model",T145,T144,SYS-002.D.13.1.9.1
+LIFE-001,"Sept états d'action, transitions strictement contrôlées",SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-002,Terminalité distincte du résultat effectif,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-003,Compteurs d'opérations cohérents et vérifiables,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-004,"Engagement atomique des ressources, cooldowns et effets d'activation",SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-005,Rejet sans coût ni cooldown,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-006,Absence de remboursement implicite après engagement,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-007,Capture offensive après installation des buffs d'activation,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-008,"Résolution partielle possible, sans annulation rétroactive",SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-009,"Opérations `EXECUTED`, `SKIPPED`, `CANCELLED` et `STALE` distinctes",SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-010,Annulation des opérations différées selon leur politique de survie,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-011,Maintien des réactions immédiates déjà déclenchées,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-012,Impossibilité d'engager une action ordinaire après `DEATH_PENDING`,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-013,Durée de vie des effets indépendante de celle des actions,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-014,Actions enfants indépendantes de la terminalité du parent,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-015,Annulation avant la décision de combo empêchant la création du combo,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+LIFE-016,Versionnement et traçabilité de tous les engagements et annulations,SYS-002.D.13.2,Action Lifecycle,T146,T145,SYS-002.D.13.2.10.1
+SCHED-001,Horloge logique en microsecondes entières,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-002,"Exécution événementielle, sans dépendance au framerate",SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-003,"Six phases ordonnées : expirations, engagements, impacts de classe, autres impacts, réactions résiduelles, finalisation",SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-004,Disponibilités temporelles traitées avant les engagements,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-005,Priorité des compétences de classe sur les nouvelles actions normales et Pal,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-006,Une seule activation ordinaire par acteur et timestamp,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-007,Clôture des réactions immédiates après chaque opération d'impact,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-008,Atomicité d'une opération AoE sur son ensemble de cibles,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-009,Impacts indépendants résolus séquentiellement selon un ordre total,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-010,Ordre stable des opérations et des cibles,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-011,Aucun retour rétroactif vers une phase clôturée,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-012,Nouvelle décision au prochain instant logique admissible,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-013,Politique RNG déterministe par identité de décision,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-014,Aucun tirage RNG pour une décision inéligible,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-015,Résultat RNG unique et reproductible par décision,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-016,"Règles de calcul, ordre des événements et algorithme RNG versionnés",SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-017,Journal des événements de domaine distinct des traces diagnostiques,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+SCHED-018,Reproductibilité définie par l'ensemble des entrées initiales et des commandes,SYS-002.D.13.3,Combat Scheduler,T147,T146,SYS-002.D.13.3.9.1
+DMG-001,Les dégâts sont décomposés en composantes identifiées et typées,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-002,"Origine, catégorie offensive, groupe de scaling et profil défensif sont séparés",SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-003,Un impact confirme la touche avant la résolution des dégâts,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-004,Les critiques sont résolus avant les mitigations,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-005,Les composantes peuvent hériter d'un résultat critique sans nouveau tirage,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-006,"La DEF utilise une formule versionnée, jamais implicite",SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-007,Les résistances sont appliquées par groupe éligible,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-008,Les résistances du profil initial sont bornées entre 0 et 100 %,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-009,Les bonus de dégâts reçus sont distincts des réductions de résistance,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-010,Les immunités sont évaluées par composante,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-011,Le contournement d'immunité est explicite et limité aux catégories autorisées,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-012,"L'invulnérabilité absolue protège contre les effets hostiles, sauf exception explicite",SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-013,Les boucliers sont des instances indépendantes avec un ordre d'absorption stable,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-014,La destruction des boucliers précède leur absorption sur un impact admissible,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-015,Les pertes de capacité de bouclier sont distinctes des pertes de PV,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-016,Les dégâts proportionnels aux PV utilisent une référence pré-impact explicite,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-017,Les composantes d'un même impact suivent un ordre stable,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-018,Les dégâts supplémentaires ne produisent pas de critique ou de récursion implicite,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-019,Les calculs intermédiaires utilisent une arithmétique déterministe,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-020,La quantification initiale utilise `FIXED_POINT_FLOOR_FINAL` par composante,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-021,Les dégâts effectifs ne peuvent pas dépasser les PV disponibles,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-022,"Les événements de touche, critique, bouclier et dégâts PV sont distincts",SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-023,"Le profil de dégâts, les formules et leurs politiques d'arrondi sont versionnés",SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+DMG-024,Toute formule ou donnée indispensable manquante empêche l'exécution du profil,SYS-002.D.13.4,Damage Resolution Engine,T148,T147,SYS-002.D.13.4.14.1
+MOD-001,"Modificateurs identifiés, typés et associés à une source",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-002,"Agrégation calculée depuis les contributions, sans mutation cumulative des statistiques de base",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-003,Opérations mathématiques et unités explicites,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-004,"Ordre stable : transformation des contributions, agrégation des groupes, composition, bornage",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-005,"Groupes distincts pour les statistiques offensives, défensives, critiques, Pal et ressources",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-006,Rejet des remplacements de même priorité incompatibles,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-007,"Politiques `STATIC_WHILE_ELIGIBLE`, `DYNAMIC_STATE_DERIVED` et `APPLICATION_SNAPSHOT`",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-008,Recalcul dynamique par graphe de dépendances acyclique,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-009,"Amplification des effets natifs Supreme Spirit P3 avant agrégation, une seule fois",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-010,"Snapshot offensif après les effets d'activation, immuable ensuite",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-011,Nouveau snapshot pour chaque action enfant autonome,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-012,"Défenses, immunités et boucliers évalués à l'impact",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-013,Instances d'effets distinctes des actions qui les créent,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-014,"Durées semi-ouvertes, expirations prioritaires",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-015,`UNIQUE_SOURCE_REFRESH` avec clé de source stable,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-016,"Rafraîchissement remplaçant durée et magnitude, sans cumul implicite",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-017,Générations invalidant les anciennes échéances,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-018,Rafraîchissement périodique conservant sa phase de ticks par défaut,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-019,Persistance après mort explicitement définie par catégorie d'effet,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-020,Nettoyage après résolution des réactions mortelles admissibles,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-021,Capacités non numériques et charges consommables séparées des bonus statistiques,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-022,Charge Darklord P5 capturée et consommée atomiquement à l'engagement,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-023,Aucun recalcul rétroactif des actions déjà engagées,SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+MOD-024,"Profils de groupes, unités, durées et politiques d'effets versionnés",SYS-002.D.13.5,Modifier & Snapshot Engine,T149,T148,SYS-002.D.13.5.12.1
+PAL-001,"Les Pals sont des acteurs offensifs autonomes, dépendants d'un propriétaire",SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-002,Les statistiques Pal et effets de déploiement utilisent les modificateurs partagés,SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-003,"Chaque Pal possède une progression d'attaque individuelle, conservée aux changements d'APS",SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-004,"Les attaques et combos Pal réutilisent les actions parentes, impacts enfants et RNG déterministes",SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-005,Le ciblage Pal est explicite et aucun retargeting n'est implicite,SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-006,Les passifs Beastmaster/Supreme Spirit utilisent les contrats partagés sans règles parallèles,SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-007,"Mort du propriétaire : annulation des actions Pal restantes, sans effacer les faits déjà produits",SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1
+PAL-008,Les profils Pal et synergies incomplets ne peuvent pas produire de règles exécutables,SYS-002.D.13.6,Pal Combat Integration,T150,T149,SYS-002.D.13.6.11.1

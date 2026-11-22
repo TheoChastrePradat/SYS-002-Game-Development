@@ -1,0 +1,722 @@
+﻿turn,timestamp,type,decision_id,chapter,source_prompt_line,source_response_line,owner_statement
+T002,17/11/2026 16:36:22,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,T002,"00 - Vision, cadrage, architecture et modèle de combat",23,30,"Le sujet de cette instance conversationnelle portera sur un nouveau projet.
+Tu connais certainement le jeu mobile Legend of Mushrooms.
+Je souhaiterais le reproduire pour avoir ma propre version. Dans la mesure à ne pas créer de plagia il faudrait peut être modifier certaines choses, mais globalement je souhaite reproduire ce jeu personnellement afin de pouvoir jouer en bénéficiant de tous les avantages en jeu"
+T005,17/11/2026 16:56:52,APPROBATION_EXPLICITE,T005,"00 - Vision, cadrage, architecture et modèle de combat",1035,1040,"Décision GDD SYS-002 : modèle de combat A. Précisions : Les déplacements, attaques et compétences sont automatiques. Le joueur observe le combat et intervient principalement dans la progression.. Poursuivons la spécification du moteur de combat"
+T006,17/11/2026 17:16:39,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.1,01 - Construction des dégâts bruts,1509,1515,"Continuons.
+Pour chaque étape, donnes moi la possibilité de valider les choix afin d'apporter une modification/spécification si necessaire"
+T007,17/11/2026 17:54:18,APPROBATION_EXPLICITE,SYS-002.D.1,01 - Construction des dégâts bruts,1694,1706,"Validation SYS-002.D.1 : modèle B. Précisions et modifications : Le mode hybride est très bien.
+Je vais rajouter des caractéristiques propres au jeu officiel afin qu'on puisse être sur les mêmes bases.
+Attributs basiques :
+PV, ATQ,  DEF, Vitesse d'ATQ
+Attributs avancés : 
+Coup critique, Ignorance de coup critique, Dégâts critique, Résistance critique, Combo, Ignorance du combo, Contre attaque, Ignorance de contre attaque, Etourdissement, Ignorance d'étourdissement, Evasion, Ignorance d'évasion, Régénération, Ignorance de régénération, En vol, Ignorance d'en vol, Coefficient d'ATQ normale, Réduction des dégâts d'ATQ normale, Coefficient de combo, Réduction des dégâts de combo, Coefficient de contre attaque, Réduction des dégâts de contre attaque, Coup critique de compétence, Ignorance du coup critique de compétence, Dégâts critiques de compétence, Dégâts de compétence, Réduction des dégâts de compétence, Dégâts de boss, Réduction des dégâts de boss, Dégâts d'Acolyte, Réduction des dégâts d'acolyte, Taux de guérison, Quantité de guérison, Perforation d'armure, Ignorance de perforation d'armure, Blocage, ignorance de blocage, Inspiration des acolytes, Ignorance de l'inspiration des Acolytes, Résistance des Acolytes, Ignorance de résistance des acolytes, Pénétration, Anti pénétration, Pénétration de compétence, Pénétration d'acolyte, Anti pénétration d'acolyte, Réduction des dégâts, Bonus de PV, Bonus d'ATQ, Bonus de Def, Bonus de vitesse d'ATQ, Augmentation des dégâts finales, Réduction des dégâts finale
+Attributs finaux :
+PV finaux, ATQ finale, DEF finale, Vitesse d'ATQ finale"
+T008,17/11/2026 18:04:39,APPROBATION_EXPLICITE,SYS-002.D.2.1,"02 - Défense, pénétration et résistances",2076,2081,Validation SYS-002.D.2.1 : modèle B. Constante K : dynamic. Précisions : Aucune
+T009,17/11/2026 18:19:50,APPROBATION_EXPLICITE,SYS-002.D.2.2,"02 - Défense, pénétration et résistances",2449,2454,Validation SYS-002.D.2.2 : modèle DEF = keep ; cumul pénétration = multiplicative ; ajout anti-pénétration compétence = oui ; perforation armure = instant
+T010,17/11/2026 18:26:12,APPROBATION_EXPLICITE,SYS-002.D.2.3,"02 - Défense, pénétration et résistances",2755,2760,Validation SYS-002.D.2.3 : cumul des résistances = multiplicative ; portée perforation armure = specific ; dégâts de boss = separate
+T011,17/11/2026 18:31:16,APPROBATION_EXPLICITE,SYS-002.D.3.1,03 - Critiques,3025,3030,Validation SYS-002.D.3.1 : critique général = subtract ; critique compétence = separate ; plafond = 100 ; héritage du type de dégâts = type
+T012,17/11/2026 18:36:21,APPROBATION_EXPLICITE,SYS-002.D.3.2,03 - Critiques,3303,3308,Validation SYS-002.D.3.2 : dégâts critiques généraux = reference ; dégâts critiques compétence = power ; portée résistance critique = general ; multiplicateur minimal = 150 ; ordre application = before_final
+T013,17/11/2026 18:49:38,APPROBATION_EXPLICITE,SYS-002.D.4.1,04 - Évasion,3614,3622,"Validation SYS-002.D.4.1 : formule évasion = reference ;  plafond = 100 ; précision = remove ; effets après esquive = on_hit ; observations = Il faudrait vérifier comment fonctionne l'évasion dans le jeu officiel.
+La définition de l'évasion dans le jeu est : Chance d'esquiver l'ATQ normale lors de l'ATQ normale subit.
+Concernant l'ignorance de l'évasion : Réduit le taux d'évasion lors de l'ATQ normale.
+Dans le jeu officiel, le taux de l'évasion va au-delà de 100%"
+T014,17/11/2026 19:53:53,APPROBATION_EXPLICITE,SYS-002.D.4.2,04 - Évasion,3873,3878,Validation SYS-002.D.4.2 : portée = expanded ; plafond PvE = 100 ; plafond PvP = 80 ; formule = reference
+T015,17/11/2026 20:03:26,APPROBATION_EXPLICITE,SYS-002.D.5.1,05 - Vitesse et cadence d’attaque,4147,4152,Validation SYS-002.D.5.1 : unité = aps ; portée = basic_skill ; cumul des bonus = hybrid ; plafond = none
+T016,17/11/2026 20:17:57,APPROBATION_EXPLICITE,SYS-002.D.5.2,05 - Vitesse et cadence d’attaque,4558,4563,Validation SYS-002.D.5.2 : première attaque = immediate ; modification dynamique = preserve ; début cooldown = activation ; exécution compétence = inverse ; verrou compétences = parallel ; précision temporelle = microseconds
+T017,17/11/2026 20:52:02,APPROBATION_EXPLICITE,SYS-002.D.6.1,"06 - Agrégation, groupes et modificateurs",4876,4881,Validation SYS-002.D.6.1 : groupes = explicit ; bonus plats = before ; cumul pourcentages = group ; groupe manquant = reject
+T018,17/11/2026 21:12:09,APPROBATION_EXPLICITE,SYS-002.D.6.2,"06 - Agrégation, groupes et modificateurs",5222,5227,Validation SYS-002.D.6.2 : cumul attaque/cible = multiply ; cumul résistances même famille = family ; position critique = after_global ; augmentation/réduction finale = independent
+T019,18/11/2026 14:07:29,APPROBATION_EXPLICITE,SYS-002.D.6.3,"06 - Agrégation, groupes et modificateurs",5632,5637,"Validation SYS-002.D.6.3 : OVERRIDE = base ; conflit même priorité = reject ; politique de cumul = explicit ; valeurs négatives = allow_clamp ; expiration = before ; UNIQUE_SOURCE = refresh ; observations = Afin d'être en accord, si plusieurs bonus se succèdent par rapport au même attribut, il doivent s'additionner, pas seulement choisir le dernier ou le plus élevé. Par exemple si une compétence applique +5% de vitesse d'attaque pendant 3 secondes et qu'une autre compétence simultanément active +3% de vitesse d'attaque pendant 6 secondes, le bonus sera de 8% pendant 3 secondes puis redescendra à 3% pour les 3 secondes restantes. Est ce clair ?"
+T020,18/11/2026 14:35:48,APPROBATION_EXPLICITE,SYS-002.D.6.4,"06 - Agrégation, groupes et modificateurs",5990,5995,"Validation SYS-002.D.6.4 : résistances négatives = clamp ; dégâts minimum = zero ; arrondi = floor ; application contraintes = final ; dénominateur critique invalide = reject ; observations = Je ne sais plus si j'ai déjà parlé des caractéristiques : Combo d'Acolyte et Coup critique d'Acolyte qui sont également des caractéristiques comme le Combo, la Contre attaque, le Coup critique etc"
+T021,18/11/2026 14:57:12,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.7.1,07 - Référentiel des statistiques,6395,6408,"SYS-002.D.7.1 — Validation du référentiel : nature combo/critique acolyte = bonus ; attributs antagonistes = unknown ; dégâts critiques acolyte = unknown ; autres caractéristiques = Je vais donner plus de précision sur la synergie de ces deux attributs.
+La synergie entre le combo d'acolyte et le coup critique d'acolyte repose sur la façon dont les compagnons (acolytes) infligent des dégâts.
+
+Le combo d'acolyte :
+Il donne une chance aux acolytes d'effectuer une attaque supplémentaire (un combo) après leur coup initial.
+Le coup critique d'acolyte :
+Il permet aux attaques des acolytes d'infliger des dégâts critiques (multipliés par vos dégâts de coup critique d'acolyte)
+Lorsqu'un acolyte attaque, il peut déclencher un coup critique, puis éventuellement enchaîner avec un combo (qui peut lui aussi être critique selon les statistiques).
+Pour qu'un build ""acolyte"" soit redoutable, il ne faut pas négliger l'attaque globale, car les dégâts de base des acolytes dépendent directement de notre puissance d'attaque générale et des multiplicateurs spécifiques (dégâts d'acolyte purs multipliés par vos bonus)"
+T022,18/11/2026 15:25:55,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.7.3,07 - Référentiel des statistiques,6864,6877,"SYS-002.D.7.3 — Validation globale : ATQ acolyte = final ; coefficient acolyte = individual ; critiques = per_hit ; enchaînement combo = single ; architecture = approve ; observations = Je vais rajouter une précision concernant les acolytes, qu'il faudra certainement approfondir plus tard.
+Les acolytes sont des compagnons qui accompagnent et soutiennent le personnage dans ses combats (PvE ou PvP). 
+Les acolytes possèdent également un niveau, allant du niveau 1 à 200.
+Pour faire évoluer et monter en niveau les acolytes, il faut accumuler des doublons en effectuant des invocations d'acolyte.
+Chaque acolyte possède des caractéristiques qui lui sont propres indépendamment des caractéristiques (que nous connaissons déjà) du personnage.
+L'acolyte possède :
+Coefficient de dégâts, Vitesse d'attaque, Coup critique, Dégâts critique, Combo, Coefficient de combo, Ignorance d'évasion.
+Chaque acolyte possède également un effet de déploiement qui lui est propre (à définir plus tard).
+Ils possèdent différents niveaux de rareté (rares, excellents, épiques, mythiques, etc.), les plus rares offrant des compétences uniques très puissantes (boucliers, soin, boosts massifs de stats etc.)"
+T024,18/11/2026 15:49:49,APPROBATION_EXPLICITE,SYS-002.D.8.1,08 - Mécaniques de combat additionnelles,7591,7596,Validation SYS-002.D.8.1 : portée du combo = normal ; formule ignorance = subtract ; nombre de combos = single ; condition = landed ; temporalité = immediate ; base dégâts = attack_times_coefficient
+T025,18/11/2026 16:44:12,APPROBATION_EXPLICITE,SYS-002.D.8.2,08 - Mécaniques de combat additionnelles,7955,7965,"Validation SYS-002.D.8.2 : portée = direct ; condition = positive_damage ; ignorance = subtract ; nombre = per_event ; base dégâts = attack_coefficient ; critique = general ; évasion = yes ; temporalité = immediate ; observations = • Les attaques normales : Chaque attaque de base de l'adversaire lance un jet de probabilité selon votre taux de contre-attaque.
+• Les attaques de combo : Chaque coup supplémentaire issu d'un combo ennemi compte comme une attaque distincte et peut déclencher une riposte.
+• Les compétences actives : Les compétences qui infligent des dégâts directs à votre personnage activent également votre probabilité de contre-attaque.
+• Les attaques d'acolytes : Les coups portés directement par les familiers adverses peuvent déclencher vos ripostes.
+L'évasion (Esquive) : Si vous esquivez une attaque grâce à votre statistique d'évasion, la contre-attaque ne se déclenche pas dans les mécaniques standards, car vous n'avez pas été touché (sauf effet de classe très spécifique).
+Les boucliers : Si vous absorbez un coup grâce à un bouclier, l'attaque est tout de même comptabilisée comme reçue et peut donc déclencher votre contre-attaque"
+T026,18/11/2026 17:38:40,APPROBATION_EXPLICITE,SYS-002.D.8.3,08 - Mécaniques de combat additionnelles,8318,8323,Validation SYS-002.D.8.3 : signification stun_ignore = reduce ; portée = direct ; condition = landed ; actions bloquées = all_actions ; durée = effect_defined ; réapplication = refresh
+T027,18/11/2026 17:50:32,APPROBATION_EXPLICITE,SYS-002.D.8.4,08 - Mécaniques de combat additionnelles,8654,8667,"Validation SYS-002.D.8.4 : ignorance = subtract ; portée = direct ; effet = verify ; vulnérabilité = vulnerable ; durée = effect ; réapplication = refresh ; interaction étourdissement = coexist ; observations = Il faudrait changer le nom de cette caractéristique, je ne la trouve pas très clair au premier abord.
+Le mécanisme d'en vol (ou lancement en l'air) est un effet de contrôle de foule qui projette brièvement la cible dans les airs, interrompant toutes ses actions.
+
+Fonctionnement et effets en combat
+
+• Interruption totale (Micro-étourdissement) : Lorsqu'un ennemi est projeté en vol, il est incapable d'attaquer, de déclencher des combos, de contre-attaquer ou d'activer ses compétences tant qu'il est en l'air.
+• Durée très courte : Contrairement à l'étourdissement classique des Mages qui dure plusieurs secondes, le lancement en vol est très bref.
+• Contre-mesure contre la résistance à l'étourdissement : Le lancement en vol est considéré comme une mécanique distincte de l'étourdissement. Il ignore la statistique de « Résistance à l'étourdissement » de l'adversaire, ce qui le rend redoutable en PvP.
+• Réinitialisation des animations : En plus de faire gagner de précieuses fractions de seconde, la projection brise le rythme d'attaque de l'adversaire et retarde le rechargement de ses compétences actives"
+T028,18/11/2026 18:16:39,APPROBATION_EXPLICITE,SYS-002.D.8.5,08 - Mécaniques de combat additionnelles,9067,9079,"Validation SYS-002.D.8.5 : portée = direct ; ignorance = subtract ; conséquence = reduce ; quantité bloquée = fixed ; fréquence = per_hit ; effets secondaires = hit_effects ; ordre de calcul = before_defense ; observations = le blocage (Block) est une statistique défensive avancée qui permet de réduire une partie des dégâts subis lors d'une attaque directe, et s'oppose directement à la statistique de perforation (Pierce).
+
+Fonctionnement en combat
+
+• Réduction des dégâts subis : Lorsqu'un blocage s'active face à une attaque ennemie, il diminue considérablement les dégâts finaux que vous recevez, ce qui vous permet de survivre beaucoup plus longtemps face aux classes à gros dégâts (DPS).
+• Opposition Blocage vs Perforation : Le système fonctionne par comparaison entre votre statistique de Blocage et la statistique de Perforation (Pierce) de l'adversaire. Plus votre blocage est supérieur à sa perforation, plus le déclenchement et l'efficacité de la réduction sont élevés.
+• Interactions avec les autres mécaniques : Contrairement à l'évasion qui annule totalement le coup (et empêche la contre-attaque), le blocage laisse l'attaque vous toucher avec des dégâts réduits. Cela permet aux Guerriers d'encaisser le coup tout en continuant de déclencher leurs contre-attaques.
+• Limites face aux dégâts spéciaux : Le blocage est très efficace contre les attaques classiques, mais son impact est beaucoup plus faible contre les dégâts indexés sur un pourcentage de vos PV maximum"
+T029,18/11/2026 18:26:33,APPROBATION_EXPLICITE,SYS-002.D.8.6,08 - Mécaniques de combat additionnelles,9497,9509,"Validation SYS-002.D.8.6 : unité = max_hp ; fréquence = periodic ; ignorance = subtract ; portée ignorance = continuous ; interaction guérison = separate ; contrôles = continue ; cumul = independent ; observations = la régénération (Regen) permet de récupérer des points de vie (PV) de façon passive et continue chaque seconde durant un combat.
+
+Fonctionnement et mécanismes
+
+• Soin par seconde : Contrairement au vol de vie ou aux soins déclenchés par vos attaques, la régénération restaure automatiquement un pourcentage de vos PV maximum chaque seconde.
+• Aucune condition d'action : Vous continuez de regagner de la vie même lorsque vous êtes étourdi (Stun), projeté en l'air ou incapable d'attaquer.
+• Synergie avec les PV maximum : Plus votre réserve totale de PV est élevée, plus le montant réel de soins récupéré à chaque seconde est important.
+• Limite d'efficacité (Anti-soin) : En PvP, l'efficacité de la régénération diminue à mesure que le combat s'éternise (réduction progressive des soins dans le temps) et peut être réduite par des effets « anti-soin » adverses"
+T030,18/11/2026 18:53:18,APPROBATION_EXPLICITE,SYS-002.D.8.7,08 - Mécaniques de combat additionnelles,9841,9857,"Validation SYS-002.D.8.7 : inspiration = stats ; ignorance inspiration = reduce ; résistance = damage ; ignorance résistance = reduce ; portée = unknown ; modèle mathématique = unknown ; observations = la caractéristique d'inspiration des acolytes correspond à une attaque spéciale déclenchée par vos acolytes en plus de leurs attaques normales et de leurs compétences passives.
+Mécanisme de déclenchement et effets
+- Une attaque de groupe ou renforcée : Lorsqu'un acolyte déclenche son inspiration, il effectue une frappe spéciale dont les dégâts sont calculés à partir de votre statistique d'attaque globale et amplifiés par le multiplicateur d'inspiration d'acolyte.
+- Condition d'activation : L'inspiration fonctionne sur un système de probabilité par attaque ou de jauge d'énergie liée aux coups portés par vos acolytes. Plus la vitesse d'attaque de vos acolytes est élevée, plus ils accumulent rapidement les conditions nécessaires pour déclencher cette inspiration.
+- Synergie avec la classe Dompteur : La branche du Dompteur (Beast Master / Tamer) repose entièrement sur ce mécanisme. Ses compétences actives et ses passifs d'éveil augmentent directement le taux d'inspiration, les dégâts d'inspiration et permettent à tous vos acolytes équipés de déclencher simultanément un état d'excitation.
+- Interaction avec les critiques et combos d'acolytes : Une attaque d'inspiration peut également bénéficier d'un coup critique d'acolyte, créant des pics de dégâts massifs en combat.
+
+la statistique Ignorance de l'inspiration d'acolyte (Ignore Pal Inspire) est une caractéristique défensive de fin de jeu conçue pour réduire ou annuler les bonus d'inspiration des acolytes adverses. [[1](https://www.youtube.com/watch?v=SF8rWwtzfoo&t=294), [2](https://guidesbygrace.uk/divining)]
+Fonctionnement en combat
+- Contre-mesure directe : Elle s'oppose directement à la statistique d'Inspiration d'acolyte (Pal Inspire) de votre adversaire lors du calcul des dégâts. [[1](https://guidesbygrace.uk/divining)]
+- Réduction des dégâts spéciaux des familiers : Lorsqu'un ennemi déclenche l'inspiration de ses acolytes, votre valeur d'ignorance soustrait ou diminue le multiplicateur appliqué à leurs attaques spéciales.
+- Spécialisation anti-Dompteur : Cette statistique vise particulièrement la classe Dompteur (Beast Master / Tamer), ainsi que tous les joueurs qui misent sur des familiers à très gros dégâts"
+T032,18/11/2026 19:08:16,APPROBATION_EXPLICITE,SYS-002.D.9.1,09 - Modèle des acolytes et combat,10567,10592,"Validation SYS-002.D.9.1 : gestion instances = separate ; doublons = shared_balance ; progression niveaux = individual ; courbes = rarity_curve ; influence rareté = capabilities ; effets déploiement = on_deploy ; runtime = snapshot ; observations = Les acolytes (Pals) sont classés selon 8 niveaux de rareté standard (du plus commun au plus rare), auxquels s'ajoute une catégorie spéciale pour les événements exclusifs.
+
+Les 8 raretés principales (du plus faible au plus puissant)
+
+• Normal (Gris / Blanc) : Les acolytes de base obtenus dès le début du jeu, offrant de très faibles bonus.
+• Unique (Vert) : La deuxième catégorie de départ, utile uniquement lors des toutes premières heures de progression.
+• Bien / Supérieur (Bleu) : Permet d'obtenir les premiers petits effets passifs utiles en début de partie.
+• Rare (Violet) : Introduit des effets de déploiement plus intéressants pour commencer à orienter votre style de jeu.
+• Mythique (Orange) : Marque un cap important avec des bonus nettement plus élevés et des synergies de classe plus marquées.
+• Épique (Rouge) : Des acolytes très puissants qui constituent la base des équipes de milieu et fin de jeu.
+• Légendaire (Doré / Jaune) : Offrent des capacités passives majeures et de gros multiplicateurs de statistiques.
+• Immortel (Rose / Arc-en-ciel) : Le rang ultime des invocations classiques, doté des meilleurs effets de combat et des plus hauts bonus passifs permanents.
+
+Catégorie supplémentaire
+
+• Exclusif / Collab (Spécial) : Certains acolytes spéciaux (comme ceux issus des collaborations ou événements temporaires) disposent de leur propre classement à part et ne s'obtiennent pas dans le portail d'invocation classique, comme le détaille le catalogue de Guides by Grace.
+
+Ce qu'il faut savoir sur les raretés
+
+• Double effet : Chaque acolyte possède un effet de déploiement (actif uniquement s'il est équipé dans votre équipe de 5) et un effet permanent (bonus d'ATQ, PV et DÉF actif dès que vous le possédez, même sans l'équiper).
+• Probabilités d'invocation : Plus le niveau de votre portail d'invocation augmente grâce aux tirages, plus vos chances d'obtenir des raretés Épique, Légendaire et Immortel progressent"
+T033,18/11/2026 19:20:51,APPROBATION_EXPLICITE,SYS-002.D.9.2,09 - Modèle des acolytes et combat,11027,11046,"Validation SYS-002.D.9.2 : gestion instances = one_per_type ; ressources = duplicates_only ; coût = rarity_table ; statistiques évolutives = all_seven ; courbes = piecewise ; montée de niveau = multi ; doublons niveau 200 = retain ; bonus permanents = unknown ; observations = Je vais clarifier :
+un acolyte monte du niveau 1 au niveau 200 exclusivement en consommant des exemplaires identiques (doublons) obtenus lors de vos invocations au portail.
+
+La montée en niveau (1 à 200) et consommation des doublons
+
+• Déblocage initial : Le tout premier exemplaire tiré au portail débloque l'acolyte au niveau 1.
+• Coût progressif en doublons : Pour passer au niveau supérieur, il faut accumuler un nombre précis de cartes du même acolyte. Ce coût commence très bas (2 ou 3 doublons aux tout premiers niveaux) et augmente progressivement par paliers jusqu'au niveau 200.
+• Bouton « Amélioration rapide » : Dès que vous possédez assez de doublons pour un ou plusieurs paliers, un bouton d'amélioration globale permet de convertir automatiquement tous vos doublons disponibles en niveaux.
+• Recyclage des doublons après le niveau 200 : Une fois qu'un acolyte atteint le niveau maximum (200), les doublons supplémentaires que vous continuez de tirer ne sont pas perdus. Le jeu les fusionne automatiquement pour générer des cartes d'acolytes de la rareté supérieure, ce qui accélère considérablement la montée des acolytes Mythiques, Légendaires et Immortels en fin de jeu.
+
+L'évolution des caractéristiques à chaque niveau
+
+• L'effet possédé (Bonus passif permanent) : À chaque niveau gagné, le pourcentage d'ATQ, de PV et de DÉF que l'acolyte confère à votre personnage augmente. Ce bonus s'applique en permanence à votre compte, même si l'acolyte n'est pas équipé dans votre équipe.
+• Les dégâts directs en combat : Le multiplicateur de dégâts de base de l'acolyte augmente à chaque niveau, rendant ses attaques normales et ses attaques d'inspiration beaucoup plus puissantes sur le terrain.
+• Ce qui n'évolue pas avec les niveaux : La vitesse d'attaque de base de l'acolyte ainsi que les valeurs numériques de son effet de déploiement (par exemple, +60 % de dégâts de combo pour la Pieuvre de Pirate ou +30 % de temps d'étourdissement pour le Renard Divin) restent fixes du niveau 1 au niveau 200, comme le montrent les fiches d'acolytes sur Mobi.gg"
+T034,18/11/2026 19:30:46,APPROBATION_EXPLICITE,SYS-002.D.9.3,09 - Modèle des acolytes et combat,11498,11519,"Validation SYS-002.D.9.3 : croissance des cinq caractéristiques = individual ; combinaison propriétaire/acolyte = explicit ; vitesse d'attaque = acolyte_only ; base bonus collection = base ; ciblage déploiement = per_effect ; actualisation snapshot = incremental ; cumul bonus collection = additive ; observations = Précision :
+chaque caractéristique d'un acolyte possède sa propre règle d'évolution. Toutes les statistiques n'augmentent pas avec le niveau : certaines progressent linéairement, tandis que d'autres sont totalement figées ou dépendent uniquement de votre personnage principal.
+
+Les caractéristiques qui évoluent avec le niveau (1 à 200)
+
+• Le multiplicateur d'attaque de base (Dégâts de base) : C'est la statistique intrinsèque de combat qui augmente à chaque niveau gagné. Plus le niveau de l'acolyte est élevé, plus le pourcentage de votre attaque globale qu'il utilise pour frapper augmente.
+• L'effet possédé (Bonus passif du compte) : À chaque montée de niveau, le pourcentage d'ATQ, de PV et de DÉF que l'acolyte apporte de manière permanente à votre personnage augmente progressivement.
+
+Les caractéristiques intrinsèques fixes (qui n'évoluent pas avec le niveau)
+
+• La vitesse d'attaque de base : Chaque acolyte possède une cadence de frappe propre (par exemple 1.0, 1.2 ou 1.5 attaque par seconde selon l'espèce) qui reste strictement identique du niveau 1 au niveau 200. Pour l'augmenter, il faut passer par la classe Dompteur d'Âmes, les reliques ou l'équipement.
+• Les valeurs numériques du passif de déploiement : Les pourcentages ou durées inscrits dans la description du talent de l'acolyte (comme un bonus de dégâts de combo, un vol de vie ou un temps de contrôle) sont figés dès le niveau 1 et ne changent jamais avec les doublons.
+
+Les caractéristiques héritées de votre personnage
+
+• Critique, Combo, Inspiration et Ignore-évasion d'acolyte : Un acolyte ne possède pas sa propre réserve de ces statistiques qui monterait avec son niveau. Ses chances de déclencher un critique, un combo ou une inspiration dépendent uniquement des statistiques globales d'acolyte accumulées sur votre champignon (via la lampe magique, la recherche, les âmes martiales et les reliques).
+• Les points de vie et la défense : Les acolytes ne peuvent pas être ciblés ni tués individuellement en combat. Ils n'ont donc aucune statistique intrinsèque de PV ou de résistance à faire évoluer"
+T035,18/11/2026 19:40:55,APPROBATION_EXPLICITE,SYS-002.D.9.4,09 - Modèle des acolytes et combat,11949,11968,"Validation SYS-002.D.9.4 : participation = all_five ; scheduler = independent ; première attaque = immediate ; ciblage = owner_target ; changement de cible = immediate ; contrôles propriétaire = independent ; coefficient combo = unknown ; portée = per_acolyte ; observations = Précisions :
+la gestion des cadences (vitesse d'attaque et fréquence des compétences) des acolytes en combat repose sur une séparation nette entre leurs attaques de base et leurs compétences passives à temps de recharge.
+
+1. La cadence des attaques de base
+
+• Rythme individuel et indépendant : Chaque acolyte attaque automatiquement selon sa propre vitesse d'attaque de base (exprimée en attaques par seconde). Vos 5 familiers n'attaquent pas de manière synchronisée par défaut, chacun suivant son propre compteur interne dès le début du combat.
+• Calcul des modificateurs de vitesse : La vitesse d'attaque finale d'un acolyte est égale à sa vitesse de base multipliée par vos bonus globaux de Vitesse d'attaque d'acolyte (provenant de l'équipement, de la recherche, des âmes martiales et de la classe Dompteur).
+• Impact sur les déclenchements : Plus cette cadence est rapide, plus l'acolyte effectue de frappes par seconde, ce qui augmente mécaniquement le nombre d'occasions de déclencher un Combo d'acolyte, un Critique d'acolyte ou la jauge d'Inspiration.
+• Immunité aux contrôles de foule : Contrairement à votre personnage principal qui arrête de frapper lorsqu'il est étourdi (Stun) ou projeté en l'air (En vol), vos acolytes ne sont pas affectés par les contrôles ennemis et maintiennent leur cadence d'attaque en continu.
+
+2. La gestion des compétences passives (Temps de recharge et seuils)
+
+• Compétences à temps de recharge (Cooldown) : De nombreux acolytes possèdent un effet actif périodique (par exemple, infliger des dégâts de zone ou poser un bouclier toutes les X secondes). Cette cadence dépend uniquement du chronomètre du combat et n'est pas accélérée par la vitesse d'attaque de base de l'acolyte.
+• Compétences déclenchées par le nombre de coups : Certains familiers (comme la Pieuvre de Pirate ou le Chaton) déclenchent un effet spécial toutes les X attaques normales (par exemple toutes les 3 ou 5 attaques). Pour ces acolytes précis, augmenter la vitesse d'attaque et le combo d'acolyte accélère directement la cadence de leurs effets spéciaux.
+• Compétences liées à votre personnage : D'autres acolytes calquent leur rythme sur les actions de votre champignon (par exemple, déclencher un bonus après que votre personnage a utilisé une compétence active ou subi un coup)"
+T036,18/11/2026 19:51:54,APPROBATION_EXPLICITE,SYS-002.D.9.5,09 - Modèle des acolytes et combat,12498,12517,"Validation SYS-002.D.9.5 : déclenchement = per_acolyte ; événements éligibles = normal_combo ; portée jauge = unknown ; réinitialisation = unknown ; formule dégâts = unknown ; critiques = inherited_per_hit ; ignorance inspiration = subtract ; simultanéité = independent ; interaction combo = unknown ; excitation Dompteur = tamer_effect ; observations = Précisions : 
+l'inspiration fonctionne par un double mécanisme probabiliste et cumulatif lié aux attaques normales de vos acolytes.
+
+Les étapes du déclenchement
+
+• Jet de probabilité sur attaque normale. À chaque attaque de base effectuée par un acolyte, le jeu réalise un tirage basé sur votre statistique de Taux d'inspiration d'acolyte (Pal Inspire Rate).
+• Activation de l'état d'inspiration. Si le tirage réussit, l'acolyte entre instantanément en état d'inspiration et exécute une frappe spéciale dont les dégâts sont multipliés par votre statistique de Dégâts d'inspiration.
+• Interdiction de chaîne (Non-récursivité). Une attaque déclenchée par l'inspiration ne peut pas déclencher un combo d'acolyte ni réactiver une nouvelle inspiration sur le même coup.
+• Déclenchement forcé par compétences actives. La branche de classe Dompteur (Beast Master / Tamer) dispose de compétences actives et d'éveils qui court-circuitent le tirage aléatoire en forçant tous les acolytes équipés à entrer simultanément en état d'inspiration pendant une durée fixe.
+• Résolution défensive (Opposition). Avant d'appliquer les dégâts finaux à l'ennemi, votre valeur d'inspiration est comparée à la statistique d'Ignorance de l'inspiration d'acolyte (Ignore Pal Inspire) de l'adversaire, ce qui réduit le taux de déclenchement effectif ou le multiplicateur de dégâts subis.
+
+Facteurs qui accélèrent le déclenchement
+
+• La vitesse d'attaque d'acolyte. Comme le tirage s'effectue uniquement sur les attaques de base, augmenter la cadence de frappe via les reliques ou l'équipement augmente directement le nombre de lancers de dés par seconde.
+• Les Voies de divination (Divining Path). Cet arbre de progression tardif est la source principale permettant d'augmenter le taux brut d'inspiration et de contrer la résistance des tanks adverses"
+T037,18/11/2026 20:26:31,APPROBATION_EXPLICITE,SYS-002.D.9.6,09 - Modèle des acolytes et combat,13043,13048,Validation SYS-002.D.9.6 : activation déploiement = while_equipped ; séparation effets/compétences = separate ; exécution = automatic ; déclenchement = per_skill ; cooldowns = independent ; ciblage = per_skill ; simultanéité = parallel ; cumul = modifier_engine ; déblocage = definition
+T039,19/11/2026 16:24:43,APPROBATION_EXPLICITE,SYS-002.D.10.1,"10 - Acolytes, progression, invocations et architecture",13897,13910,"Validation SYS-002.D.10.1 : acolytes identiques = unknown ; bonus collection = once_per_type ; recyclage niveau 200 = immediate ; profils exclusifs = explicit_profile ; emplacements vides = allowed ; multiplicité Runtime = per_slot ; observations = Précisions :
+Il n'est pas possible d'équiper exactement le même acolyte plusieurs fois, mais vous pouvez équiper plusieurs acolytes d'une même famille (de raretés différentes).
+
+Fonctionnement dans l'équipe de cinq
+
+• Acolyte unique. Chaque carte d'acolyte possède un seul emplacement d'amélioration (les doublons tirés servent à monter son niveau) et ne peut occuper qu'une seule place dans votre formation.
+• Familles d'acolytes (variantes de rareté). Une même espèce (comme les oiseaux, les cerfs, les chats ou les escargots) existe en plusieurs versions de rareté différente, et vous pouvez les placer ensemble dans votre équipe.
+• Non-cumul des passifs identiques. Comme le soulignent les joueurs sur la communauté Reddit Legend of Mushroom, les effets passifs de la même famille ne se cumulent généralement pas et seul le bonus de l'acolyte ayant la plus haute statistique s'applique (à de rares exceptions près comme certains dragons).
+• Priorité aux synergies. Il est donc préférable de varier les familles d'acolytes afin d'activer cinq bonus passifs distincts et adaptés à votre classe, comme détaillé dans le classement des acolytes sur Mobi.gg"
+T040,19/11/2026 16:34:17,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.10.1,"10 - Acolytes, progression, invocations et architecture",14383,14418,"Je veux rajouter d'autres précisions :
+
+**les acolytes sont regroupés par espèces ou « familles » thématiques, chacune offrant un type de bonus passif spécifique à travers plusieurs paliers de rareté**.
+
+Voici les principales familles d'acolytes et leurs effets associés en combat :
+
+**Familles orientées attaque et critiques**
+
+- **Oiseaux** (*Champignon Oiseau, Oiseau Anti-Pluie, Oiseau Azuré, Plumes de feu sombre*). Ils augmentent la vitesse d'attaque, les chances de combo ou les dégâts de combo.
+- **Poules et Coqs** (*Poussin Éclos, Coq Combattant*). Ils renforcent les dégâts des attaques normales.
+- **Cactus** (*Cactus Bébé, Cactus de Bête, Cactus dynamique*). Ils infligent des dégâts supplémentaires toutes les trois attaques normales.
+- **Dragons** (*Dragon du Trésor, Dragon noir, Dragon de bonheur*). Ils améliorent les chances et les dégâts de coups critiques (attaques normales et compétences).
+- **Pieuvres** (*Pieuvre de Pirate*). Elles augmentent les dégâts de combo et déclenchent des attaques supplémentaires tous les trois combos.
+
+**Familles orientées compétences et contrôle**
+
+- **Hydro-Elfes / Blobs** (*Hydro-Elfe Rose, Hydro-Elfe Belliqueux*). Ils accélèrent la régénération d'énergie des compétences actives.
+- **Chats** (*Chaton, Chat Noir, Chat Magicien*). Ils prolongent la durée d'étourdissement des ennemis ou augmentent les dégâts de contre-attaque selon leur variante.
+- **Escargots** (*Petit Escargot Jaune, Escargot Épineux, Escargot Vert*). Ils ralentissent la vitesse de déplacement et d'attaque des ennemis.
+- **Elfes de Neige / Yétis** (*Pudding de Neige, Boulette de Neige, Elfe de Neige*). Ils réduisent la vitesse d'attaque des adversaires pour limiter les dégâts subis.
+
+**Familles orientées survie et défense**
+
+- **Cerfs** (*Jeune Cerf, Cerf à Cornes, Cerf aux Fleurs*). Ils réduisent les dégâts subis par votre personnage.
+- **Pandas** (*Panda, Marteau de Panda, Panda d'Apprenti, Panda Messager*). Ils améliorent la régénération des points de vie (PV) en combat.
+- **Tortues** (*Tortue Hipster*). Elles octroient des boucliers défensifs ou améliorent la résistance globale lorsque vos PV baissent.
+- **Chiens** (*Chien Sautant, Chien Électronique*). Ils renforcent les dégâts et la survie liés à la contre-attaque.
+
+*(Note : Des acolytes spéciaux issus d'événements ou de collaborations, comme les Renards, les Lézards ou les Paladins/Pals de collab, viennent compléter ces familles classiques.)*
+
+Vous pouvez consulter la liste complète et les tier lists par classe sur [**Mobi.gg**](https://mobi.gg/fr/astuces/meilleurs-acolytes-legend-of-mushroom/) ou la base de données [**Guides by Grace**](https://guidesbygrace.uk/pals-database)"
+T042,19/11/2026 16:47:37,APPROBATION_EXPLICITE,SYS-002.D.10.2.1,"10 - Acolytes, progression, invocations et architecture",15172,15197,"Validation SYS-002.D.10.2.1 : courbe de coûts = stepwise ; monotonie coûts = non_decreasing ;  monotonie caractéristiques = non_decreasing ; coefficient combo = unknown ; profils de croissance = individual_reusable ; précision numérique = full_precision ; observations = Précisions :
+La progression des acolytes (et des compétences) suit un modèle mathématique par paliers sur 200 niveaux, combinant un coût en doublons croissant et une courbe de croissance des statistiques qui s'accélère fortement à haut niveau.
+
+1. Structure des coûts en doublons (Niveaux 1 à 200)
+
+• Progression par paliers. Le nombre de copies (doublons) requises pour monter d'un niveau augmente par tranches de niveaux plutôt que de façon strictement linéaire à chaque niveau.
+• Premiers niveaux (1 à 50). Les premiers paliers ne demandent que 2 à 5 doublons par niveau, ce qui permet de monter rapidement les raretés communes (Gris, Vert, Bleu) via les invocations.
+• Milieu de courbe (51 à 150). Le coût grimpe progressivement par tranches (passant autour de 10, 15, puis 20 à 30 doublons par niveau), créant le premier goulot d'étranglement sur les raretés Violet et Jaune.
+• Derniers paliers (151 à 200). Les ultimes niveaux exigent plusieurs dizaines de doublons par niveau (pouvant atteindre 40 à 50 copies sur les derniers paliers), portant le total cumulé à plusieurs milliers de copies pour atteindre le niveau 200.
+
+2. Courbe de croissance des statistiques (Effet possédé vs équipé)
+
+• Double impact statistique. Chaque niveau gagné augmente à la fois les dégâts de base de l'acolyte en combat et son bonus passif « Possédé » (PV, Attaque ou Défense globale), qui s'applique à votre personnage même lorsque l'acolyte n'est pas dans votre équipe de cinq.
+• Accélération exponentielle. Contrairement au bonus passif spécial de l'acolyte (qui reste fixe quelle que soit la montée de niveau, par exemple le taux de combo ou la réduction de dégâts), le bonus « Possédé » suit une courbe exponentielle.
+• Rentabilité des hauts niveaux. Un gain de niveau entre 150 et 200 apporte un saut statistique beaucoup plus massif qu'entre les niveaux 1 et 50, ce qui explique pourquoi les acolytes de rareté inférieure (Gris, Vert, Bleu) au niveau 180+ surpassent largement en statistiques passives un acolyte Rouge/Immortel de niveau 10.
+
+3. Mécanique de recyclage au niveau 200 (Synthèse rapide)
+
+• Plafond atteint. Une fois qu'un acolyte atteint le niveau 200 (MAX), ses doublons ne sont plus perdus.
+• Conversion à taux fixe (3 pour 1). Comme le montrent les guides de progression sur YouTube, chaque tranche de 3 doublons supplémentaires d'un acolyte niveau 200 est convertie automatiquement (via le bouton Synthèse rapide / Quick Enhance) en 1 exemplaire aléatoire de la rareté immédiatement supérieure (3 Gris = 1 Vert, 3 Verts = 1 Bleu, etc.).
+• Effet boule de neige. Ce système transforme progressivement tous vos tirages communs en progression vers les raretés Rouge et Rose/Immortel, rendant l'accumulation de tickets pour les événements Sprint d'acolytes particulièrement rentable sur le long terme"
+T043,19/11/2026 16:54:28,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.10.2.1,"10 - Acolytes, progression, invocations et architecture",15627,15643,"Précisions :
+
+**Non, les compétences individuelles des acolytes n'ont pas de progression indépendante de niveau 1 à 200.** Un acolyte ne possède qu'une seule jauge de niveau globale (de 1 à 200) qui affecte uniquement ses dégâts de base et son bonus passif « Possédé ». 
+
+**Distinction entre le niveau de l'acolyte et son effet**
+
+- **Un seul niveau global par acolyte.** Vous améliorez l'acolyte dans son ensemble via ses doublons, sans jamais avoir à monter une compétence séparée sur sa fiche.
+- **Effet de déploiement fixe.** Le bonus spécial d'un acolyte lorsqu'il est équipé dans l'équipe (par exemple l'augmentation du taux de combo, la durée d'étourdissement ou la régénération de PV) reste identique du niveau 1 au niveau 200.
+- **Évolution liée au niveau global.** Monter de niveau (de 1 à 200) augmente uniquement le multiplicateur de dégâts des attaques de l'acolyte en combat ainsi que son bonus permanent « Possédé » (PV, Attaque ou Défense).
+- **Ne pas confondre avec les compétences du personnage.** Les **compétences actives** de votre champignon (équipées dans les 5 emplacements de sorts) suivent quant à elles une progression séparée de niveau 1 à 200 via leurs propres tirages et doublons.
+
+Pour approfondir le fonctionnement des tirages et des améliorations, vous pouvez consulter le guide dédié sur [**Guides by Grace**](https://guidesbygrace.uk/pals-skills)"
+T044,19/11/2026 17:00:09,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.10.2.1,"10 - Acolytes, progression, invocations et architecture",15862,15887,"Précisions : 
+
+**Dans la pratique (et comme observé dans *Legend of Mushroom*), les paliers de niveaux sont communs à toutes les raretés, mais chaque rareté possède sa propre échelle de coûts en doublons et ses propres taux de chute pour équilibrer la progression.**
+
+Si vous concevez un système similaire (game design) ou cherchez à comprendre la logique mathématique derrière cette structure, voici pourquoi les paliers communs avec coûts différenciés s'imposent face aux paliers variables :
+
+**1. Pourquoi garder des frontières de paliers communes (1–50, 51–150, 151–200)**
+
+- **Lisibilité et repères cognitifs.** Le joueur assimile rapidement qu'un cap (comme le niveau 50, 100 ou 150) marque un changement de rythme universel, quelle que soit la carte consultée.
+- **Alignement des courbes de puissance.** Garder les mêmes seuils permet de synchroniser les pics de statistiques passives (« Possédé ») entre les raretés communes et les raretés mythiques, facilitant l'équilibrage global du jeu.
+- **Simplicité d'implémentation et de maintenance.** Une seule table de tranches de niveaux évite de multiplier les formules complexes et réduit les risques d'erreurs d'équilibrage lors de l'ajout d'une nouvelle rareté.
+
+**2. Comment différencier les raretés sans changer les paliers**
+
+- **Multiplicateur de coût par rareté.** Bien que les tranches de niveaux soient identiques, le nombre de doublons requis par niveau est ajusté selon la rareté (une rareté Commune demandera plus de copies par palier pour compenser sa grande abondance au tirage, tandis qu'une rareté Immortelle/Rose demandera moins de copies mais avec un taux d'invocation infime).
+- **Taux d'obtention (Gacha) comme levier principal.** C'est la probabilité de tirage (par exemple 50 % pour le Gris contre 0,05 % pour le Rose) qui crée naturellement le ralentissement sur les hautes raretés, sans avoir besoin de déplacer les frontières de paliers.
+- **Mécanique de conversion (3 pour 1).** Des frontières communes permettent aux raretés inférieures d'atteindre le plafond (niveau 200) en premier afin d'alimenter les raretés supérieures via la synthèse automatique.
+
+**3. Quand envisager des frontières propres à chaque rareté**
+
+- **Cas d'un plafonnement progressif.** Des frontières spécifiques ne sont pertinentes que si les raretés inférieures sont bloquées à un niveau maximum inférieur (par exemple : Gris bloqué au niveau 100, Vert au niveau 150, Rouge au niveau 200), ce qui n'est pas le cas ici puisque toutes les cartes montent jusqu'au niveau 200"
+T045,19/11/2026 17:08:35,APPROBATION_EXPLICITE,SYS-002.D.10.2.1.C.2,"10 - Acolytes, progression, invocations et architecture",16172,16185,"Validation SYS-002.D.10.2.1.C.2 : sous-paliers = shared ; multiplicateur = global ; courbe de référence = lookup ; fusion Immortel = terminal ; observations = Précisions :
+Oui, au sommet de la rareté Immortelle (Rose), il n'existe plus de palier supérieur vers lequel fusionner. Une fois qu'un acolyte ou une compétence (celles du personnage) Immortelle atteint le niveau 200 (MAX), les doublons supplémentaires s'accumulent dans votre inventaire sans conversion automatique.
+
+Gestion des doublons au plafond Immortel
+
+• Arrêt de la chaîne de synthèse. La mécanique de fusion (3 doublons de niveau 200 contre 1 exemplaire aléatoire de la rareté supérieure) s'arrête dès que les cartes Rouges (Mythiques/Exotiques) fusionnent vers les cartes Roses (Immortelles).
+• Conservation dans l'inventaire. Les copies excédentaires d'un acolyte Immortel déjà au niveau 200 restent stockées en réserve sur sa fiche, car le jeu ne propose pas de rareté supérieure invocables dans le portail classique.
+• Intérêt stratégique continu. Même lorsqu'un ou plusieurs Immortels atteignent le niveau maximum, les fusions issues des raretés inférieures continuent d'alimenter les autres acolytes Immortels qui ne sont pas encore niveau 200.
+• Utilité pour les événements. Continuer à invoquer et fusionner des doublons reste rentable durant les événements de type Sprint d'acolytes ou de compétences, car les points sont attribués au nombre de tirages effectués et non à l'utilisation des doublons"
+T046,19/11/2026 17:15:32,APPROBATION_EXPLICITE,SYS-002.D.10.2.1.C.3,"10 - Acolytes, progression, invocations et architecture",16589,16594,Validation SYS-002.D.10.2.1.C.3 : sous-paliers = approve ; coûts de référence = approve ; rareté de référence = normal_one ; ordre des multiplicateurs = non_increasing
+T047,19/11/2026 17:26:48,APPROBATION_EXPLICITE,SYS-002.D.10.2.1.C.4,"10 - Acolytes, progression, invocations et architecture",16812,16846,"Validation SYS-002.D.10.2.1.C.4 : multiplicateurs = approve ; statut calibration = provisional ; observations = Précisions :
+Dans Legend of Mushroom, les probabilités de gacha d'obtention des acolytes et des compétences évoluent selon le niveau de la machine d'invocation (de 1 à 15), atteignant un maximum de 0,04 % (1 chance sur 2 500) pour la rareté Immortelle.
+
+1. Évolution des taux selon le niveau d'invocation (1 à 15)
+
+Chaque tirage effectué fait progresser une jauge d'expérience propre au portail (Acolytes ou Compétences) afin de débloquer de meilleures probabilités :
+• Niveaux 1 à 8 (Début de partie). Les chances se concentrent quasi exclusivement sur les raretés Grise (Commune), Verte et Bleue, avec l'apparition progressive du Violet et du Jaune.
+• Niveaux 9 à 12 (Milieu de partie). Les raretés Orange et Rouge (Exotique/Mythique) deviennent accessibles, tandis que la rareté Rose (Immortelle) s'ouvre autour du niveau 11-12 avec un taux initial de 0,01 % (1 chance sur 10 000).
+• Niveau 13. Le taux d'obtention d'un Immortel double pour passer à 0,02 % (1 chance sur 5 000).
+• Niveau 15 (Plafond maximum). La machine atteint son rendement maximal avec 0,04 % de chance pour un Immortel (1 chance sur 2 500), environ 0,2 % à 0,5 % pour le Rouge, et une forte réduction du taux de cartes Grises au profit des raretés Bleues, Violettes et Jaunes.
+
+2. Probabilité de cibler une carte précise
+
+• Partage équitable au sein d'une rareté. Lorsqu'un tirage tombe sur une rareté donnée, le jeu sélectionne aléatoirement l'une des cartes disponibles dans ce palier (par exemple, avec 3 à 5 compétences Immortelles dans le portail classique, obtenir une compétence précise représente environ 15 % à 33 % de chance une fois le palier Rose déclenché).
+• Absence de « Pity » classique. Contrairement à d'autres jeux gacha, les machines à pinces standards d'acolytes et de compétences n'ont pas de compteur de garantie (pity) fixe : chaque tirage est indépendant, bien que les grands nombres et la synthèse (3 pour 1) lissent les résultats sur la durée.
+
+3. Autres portails et optimisation des tirages
+
+• Invocations d'Âmes Martiales. Les cristaux d'âme suivent une table différente, avec un taux d'environ 0,4 % pour une âme rouge/LR de haut rang, compensé par un système de garantie et d'essence d'âme.
+• Tirages groupés avantageux. Utiliser l'option x35 tirages ne coûte que 30 tickets (soit environ 14 % de tirages gratuits en plus), et le niveau 15 débloque l'option x999
+
+Atteindre le niveau 15 d'invocation demande plusieurs dizaines de milliers de tirages cumulés (avec des paliers de 3 000 à plus de 10 000 tirages par niveau sur la fin), mais il est tout à fait possible d'obtenir et de monter des cartes Immortelles gratuitement grâce au recyclage des doublons et aux événements hebdomadaires.
+
+1. Progression des niveaux de machine (1 à 15)
+
+Chaque tirage effectué rapporte 1 point d'expérience à la machine concernée (Acolytes ou Compétences) :
+• Niveaux 1 à 8 (Montée rapide). Les premiers paliers ne demandent que quelques dizaines à quelques centaines de tirages (par exemple 50, 100, 200, 400 tirages) pour débloquer progressivement les raretés Bleue, Violette, Jaune et Orange.
+• Niveaux 9 à 11 (Transition vers le Mythique). Chaque niveau exige entre 1 000 et 2 500 tirages, débloquant la rareté Rouge (Exotique/Mythique) autour du niveau 6-9 selon le portail.
+• Niveau 12 (Ouverture des Immortels). Il faut 3 000 tirages supplémentaires depuis le niveau 11 pour atteindre le niveau 12, seuil où les cartes Roses (Immortelles) apparaissent enfin à 0,01 %, comme illustré dans les sessions de tirages sur YouTube.
+• Niveaux 13 à 15 (Plafond de rendement). Les trois derniers paliers requièrent entre 5 000 et 15 000 tirages par niveau pour faire grimper le taux Immortel à 0,02 % (niveau 13), 0,03 % (niveau 14), puis 0,04 % (niveau 15)"
+T048,19/11/2026 17:31:13,APPROBATION_EXPLICITE,SYS-002.D.10.2.1.D.1,"10 - Acolytes, progression, invocations et architecture",17550,17555,Validation SYS-002.D.10.2.1.D.1 : ordre XP/tirage = before_xp ; tirages groupés = sequential ; sélection pool = uniform_available ; profils XP = independent
+T049,19/11/2026 17:43:43,APPROBATION_EXPLICITE,SYS-002.D.10.2.1.E.1,"10 - Acolytes, progression, invocations et architecture",17958,17963,Validation SYS-002.D.10.2.1.E.1 :    nombre de bonus possédés = single_type ; valeurs initiales = first_anchor_positive
+T051,19/11/2026 17:55:54,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.10.2.1,"10 - Acolytes, progression, invocations et architecture",18706,18728,"**Il n'existe pas de base de données publique listant les valeurs numériques exactes niveau par niveau (1, 50, 100, 150, 200) de chaque acolyte**, mais nous disposons de la structure complète d'une fiche type et des formules exactes qui régissent sa progression.
+
+Voici toutefois comment se présente une **fiche technique complète d'acolyte** et comment évoluent ses deux valeurs chiffrées sur les paliers demandés :
+
+**1. Anatomie d'une fiche d'acolyte**
+
+Sur la carte d'un acolyte en jeu, on retrouve quatre éléments distincts :
+
+- **Rareté et niveau actuel (1 à 200).** Indique le palier de couleur (de Gris à Rose/Immortel) et l'avancement vers le plafond.
+- **Effet de déploiement (Statique).** Le bonus spécial actif uniquement lorsque l'acolyte est équipé dans l'équipe de cinq (par exemple : *Vitesse d'attaque +15 %* ou *Dégâts de combo +25 %*), dont la valeur est identique au niveau 1 et au niveau 200.
+- **Coefficient de dégâts en combat (Évolutif).** Le pourcentage de l'attaque de votre personnage que l'acolyte inflige à chacune de ses propres attaques basiques (par exemple : *Inflige 45 % de votre ATQ en dégâts* au niveau 1).
+- **Bonus « Possédé » (Évolutif et cumulatif).** Le pourcentage permanent d'ATQ, de PV ou de DÉF ajouté à votre personnage, actif en permanence même si l'acolyte reste dans votre inventaire.
+
+**2. Courbe d'évolution sur les paliers (1, 50, 100, 150, 200)**
+
+- **Progression linéaire par niveau.** Contrairement au coût en doublons qui grimpe par paliers, le **bonus « Possédé »** et le **coefficient de dégâts** augmentent d'un incrément fixe à chaque niveau gagné (selon la rareté de la carte).
+- **Écart d'échelle selon la rareté.** Une carte **Grise (Commune)** démarre avec un bonus possédé très faible (environ **+0,1 %** au niveau 1) pour atteindre environ **+20 % à +40 %** au niveau 200, tandis qu'une carte **Rose (Immortelle)** démarre beaucoup plus haut (plusieurs pourcents dès le niveau 1) pour dépasser les **+1 000 %** au niveau 200.
+- **Impact en combat (Formule de dégâts).** Comme l'expliquent les analyses mathématiques de la communauté sur [**YouTube**](https://www.youtube.com/watch?v=Vzg0jcmNF9k), les dégâts réels infligés par un acolyte se calculent en multipliant votre **Attaque finale** par le **coefficient de dégâts de l'acolyte**, puis par vos multiplicateurs dédiés (*Dégâts d'acolyte*, *Taux critique d'acolyte* et *Dégâts critiques d'acolyte*, essentiels pour la classe Dompteur)"
+T052,19/11/2026 17:58:54,APPROBATION_EXPLICITE,SYS-002.D.10.2.1,"10 - Acolytes, progression, invocations et architecture",19069,19074,Oui je valide
+T053,19/11/2026 18:01:13,APPROBATION_EXPLICITE,SYS-002.D.10.2.1.E.8,"10 - Acolytes, progression, invocations et architecture",19279,19284,Validation SYS-002.D.10.2.1.E.8 : politique de calibration = soft ; ordre de puissance = expected ; réutilisation des profils = same_rarity
+T055,19/11/2026 18:13:28,APPROBATION_EXPLICITE,SYS-002.D.10.2.2.1,"10 - Acolytes, progression, invocations et architecture",19935,19940,Validation SYS-002.D.10.2.2.1 : bonus possédés = additive_unique ; effets familiaux = max_group ; exceptions = explicit ; effets différents = independent
+T056,19/11/2026 18:19:16,APPROBATION_EXPLICITE,SYS-002.D.10.2.2.5,"10 - Acolytes, progression, invocations et architecture",20436,20441,Validons le modèle A
+T057,19/11/2026 18:21:02,APPROBATION_EXPLICITE,SYS-002.D.10.2.2.6,"10 - Acolytes, progression, invocations et architecture",20661,20666,Je valide le modèle C
+T058,19/11/2026 18:23:39,APPROBATION_EXPLICITE,SYS-002.D.10.2.2.7,"10 - Acolytes, progression, invocations et architecture",20950,20955,Je valide également
+T059,19/11/2026 18:30:25,APPROBATION_EXPLICITE,SYS-002.D.10.3.1,"10 - Acolytes, progression, invocations et architecture",21245,21250,Validation du modèle A
+T060,19/11/2026 18:33:12,APPROBATION_EXPLICITE,SYS-002.D.10.3.1.5,"10 - Acolytes, progression, invocations et architecture",21567,21572,Je valide cette recommendaion
+T061,19/11/2026 18:36:32,APPROBATION_EXPLICITE,SYS-002.D.10.3.2.4,"10 - Acolytes, progression, invocations et architecture",21909,21914,Validation SYS-002.D.10.3.2.4 : stockage des seuils = cumulative_lookup ; expérience niveau 15 = retain_xp
+T062,19/11/2026 18:42:27,APPROBATION_EXPLICITE,SYS-002.D.10.3.3.4,"10 - Acolytes, progression, invocations et architecture",22266,22271,Validation SYS-002.D.10.3.3.4 : atomicité = durable_sequential ; gestion tickets = reserve_full ; sélection fusion = uniform_available
+T063,19/11/2026 18:47:23,APPROBATION_EXPLICITE,SYS-002.D.10.3.4.1,"10 - Acolytes, progression, invocations et architecture",22550,22555,Validation SYS-002.D.10.3.4.1 : niveau initial après fusion = level_one ; gestion des doublons = manual
+T064,19/11/2026 18:50:33,APPROBATION_EXPLICITE,SYS-002.D.10.3.4.2,"10 - Acolytes, progression, invocations et architecture",22884,22889,Validation SYS-002.D.10.3.4.2 : catalogue = portal_catalog ;  exclusifs = explicit_only
+T065,19/11/2026 18:55:35,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.10.3.4.2,"10 - Acolytes, progression, invocations et architecture",23244,23249,"Je veux corriger un point, si une carte d'acolyte ou de compétence n'a pas été débloqué par le tirage, elle ne peut pas être obtenue par la fusion"
+T066,19/11/2026 18:59:29,APPROBATION_EXPLICITE,SYS-002.D.10.3.5.1,"10 - Acolytes, progression, invocations et architecture",23472,23477,Validation SYS-002.D.10.3.5.1 : moment du débit = charge_on_start ; interruption = resume_required
+T067,19/11/2026 19:05:21,APPROBATION_EXPLICITE,SYS-002.D.10.3.5.3,"10 - Acolytes, progression, invocations et architecture",23775,23780,Validation du modèle A
+T068,19/11/2026 19:07:20,APPROBATION_EXPLICITE,SYS-002.D.10.3.5.4,"10 - Acolytes, progression, invocations et architecture",23965,23970,Je valide le modèle A
+T069,19/11/2026 19:10:07,APPROBATION_EXPLICITE,SYS-002.D.10.3.6.1,"10 - Acolytes, progression, invocations et architecture",24276,24281,Validation SYS-002.D.10.3.6.1 : stratégie de tests = all_layers ; RNG = injectable_rng ; persistance = crash_recovery
+T070,19/11/2026 19:14:43,APPROBATION_EXPLICITE,SYS-002.D.10.3.6.3,"10 - Acolytes, progression, invocations et architecture",24853,24858,Je valide A
+T071,19/11/2026 19:50:42,APPROBATION_CONTEXTUELLE,SYS-002.D.10.3.7.1,"10 - Acolytes, progression, invocations et architecture",25119,25124,Oui
+T072,19/11/2026 19:54:18,APPROBATION_CONTEXTUELLE,SYS-002.D.10.3,"10 - Acolytes, progression, invocations et architecture",25344,25349,Parfait
+T074,19/11/2026 20:09:40,APPROBATION_EXPLICITE,SYS-002.D.10.4.1,"10 - Acolytes, progression, invocations et architecture",25639,25644,Validation du modèle A
+T076,19/11/2026 20:16:19,APPROBATION_CONTEXTUELLE,SYS-002.D.10.4.2.1,"10 - Acolytes, progression, invocations et architecture",25916,25921,Très bien faisons comme ça alors dans un premier temps
+T077,19/11/2026 20:43:18,APPROBATION_EXPLICITE,SYS-002.D.10.4.2.2,"10 - Acolytes, progression, invocations et architecture",26194,26199,Je valide. En parallèle j'ai installé Unity
+T078,19/11/2026 20:53:38,APPROBATION_EXPLICITE,SYS-002.D.10.4.2.3,"10 - Acolytes, progression, invocations et architecture",26493,26499,"Je valide le modèle A.
+Je souhaite apporter des informations concernant le système d'obtention des équipements ainsi que les équipements en eux même, sauf si tu possède déjà ces informations?"
+T080,19/11/2026 21:11:23,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1,"11 - Équipement, lampe magique, affixes et calibration",26650,26689,"Système d'obtention de l'équipement :
+
+**La Lampe Magique est le moteur central de votre progression dans *Legend of Mushroom*.** Elle fonctionne selon une boucle d'équipement et de recyclage qui fait évoluer à la fois le niveau de votre personnage et la rareté des objets générés. 
+
+---
+
+**1. Condensé des mécanismes de la Lampe Magique**
+
+- **Double moteur de progression.** Le **niveau de votre champignon** fixe la puissance brute (statistiques de base) des objets générés, tandis que le **niveau de la lampe** contrôle la probabilité d'obtenir des raretés élevées.
+- **Boucle de recyclage (Or et EXP).** Chaque charge de lampe génère une pièce d'équipement aléatoire. Vous l'équipez si elle est meilleure, ou vous la vendez instantanément pour gagner de **l'expérience** (montée de niveau du personnage) et des **pièces d'or** (indispensables pour améliorer la lampe). 
+- **Segments d'amélioration.** Monter la lampe d'un niveau nécessite d'acheter plusieurs segments avec votre or, suivis d'un temps de construction réductible via des tickets d'accélération ou des publicités. 
+- **Automatisation (Auto-Lamp).** Débloqué au **niveau 16 de personnage**, le mode automatique fait tourner la lampe en arrière-plan et s'arrête uniquement lorsqu'une pièce correspond à vos critères de rareté et de statistiques secondaires. 
+- **Tirages multiples et bannissement.** Aux niveaux de lampe **16, 20 et 24**, vous débloquez l'ouverture simultanée de **6, 8 puis 10 lampes** à la fois. Aux niveaux **12, 20 et 26**, la fonction *Adjust* permet de bloquer jusqu'à **3 affixes indésirables**. 
+- **Sources principales de lampes.** Vous obtenez vos charges via le coffre AFK (jusqu'à **1 080/jour**), le donjon *Voleur de lampe* (jusqu'à **2 500/jour**), la campagne, l'arène et la boutique de clan.
+
+---
+
+**2. Mécanisme des niveaux de rareté de la lampe**
+
+- **Élimination par le bas et déblocage par le haut.** Au niveau 1, la lampe ne génère que les raretés de base (*Normal, Unique, Bien*). À chaque montée de niveau, les pourcentages des raretés inférieures diminuent jusqu'à disparaître complètement de la table de tirage, libérant de la place pour les paliers supérieurs.
+- **Conditions spéciales en fin de jeu.** Les très hautes raretés (**Aurous** et **Éternel**) demandent à la fois un niveau de lampe élevé (niveaux 20 à 26+) et la validation d'une condition de progression affichée sur l'écran d'amélioration de la lampe.
+- **Échelle complète des 10 raretés d'équipement.** Plus le palier obtenu est élevé, plus les multiplicateurs de statistiques et le nombre d'affixes secondaires augmentent : 
+
+| **Palier** | **Rareté (Jeu)**           | **Couleur / Aspect**     | **Apparition et rôle dans la progression**                                    |
+| ---------- | -------------------------- | ------------------------ | ----------------------------------------------------------------------------- |
+| **1 à 3**  | **Normal / Unique / Bien** | Gris / Vert clair / Vert | Raretés de départ (lampes niveaux 1 à 5) ; disparaissent vite des tirages.    |
+| **4 à 5**  | **Rare / Mythique**        | Bleu / Violet            | Début et milieu de partie ; introduisent les premiers bonus secondaires.      |
+| **6 à 7**  | **Épique / Légendaire**    | Jaune / Orange           | Débloqués autour des niveaux 8 à 12 ; base solide pour spécialiser sa classe. |
+| **8**      | **Immortel** (*Immortal*)  | Rouge                    | Haut de tableau classique (lampes 15+) avec de forts bonus d'affixes.         |
+| **9**      | **Suprême / Aurous**       | Rose / Arc-en-ciel       | Paliers avancés (lampes 20+) ; déblocage conditionnel pour *Aurous*.          |
+| **10**     | **Éternel** (*Eternal*)    | Rouge-Or / Cosmique      | Rareté ultime des très hauts niveaux de lampe (26+) avec les stats maximales. |
+
+*(Note : Ouvrir 10 lampes d'un coup en mode automatique applique exactement les mêmes pourcentages de rareté que l'ouverture 1 par 1, sans aucun malus de probabilité.)* 
+
+Si tu as des questions pour l'amélioration demande moi afin que je puisse te donner plus de précision"
+T081,19/11/2026 21:24:14,APPROBATION_EXPLICITE,SYS-002.D.11.1.4,"11 - Équipement, lampe magique, affixes et calibration",26918,26923,SYS-002.D.11.1.4 — Validation Adjust : progressive
+T082,19/11/2026 21:29:51,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.5.1,"11 - Équipement, lampe magique, affixes et calibration",27000,27027,"**L'amélioration d'un niveau de lampe fonctionne par paliers intermédiaires (segments) achetés avec de l'or, suivis d'un minuteur de construction obligatoire avant de passer au niveau suivant.**
+
+Voici le fonctionnement exact de chacun des quatre points :
+
+**1. Nombre de segments par niveau**
+
+- **Nombre variable selon le palier.** Chaque niveau de lampe est divisé en un certain nombre de segments (généralement entre **3 et 5 segments** selon le niveau), et ce nombre augmente à mesure que vous progressez vers les hauts niveaux. [[1](https://www.youtube.com/watch?v=_QSsOBihZb0\&t=36)]
+- **Exemple concret.** Au niveau 23, la barre de progression se divise en plusieurs segments individuels (coûtant chacun plus d'un million d'or) avant de pouvoir déclencher le passage au niveau 24. [[1](https://www.youtube.com/watch?v=5i-Nyacw4go\&t=537), [2](https://www.youtube.com/watch?v=_QSsOBihZb0\&t=36)]
+
+**2. Achat individuel des segments avec de l'or**
+
+- **Paiement segment par segment.** Vous n'avez pas besoin d'économiser la totalité du coût d'un niveau en une seule fois : vous achetez chaque segment individuellement dès que vous disposez de la somme d'or requise. [[1](https://www.youtube.com/watch?v=_QSsOBihZb0\&t=36), [2](https://guidesbygrace.uk/gear-lamp)]
+- **Progression enregistrée.** Chaque clic remplit une fraction de la jauge d'amélioration de la lampe et retire immédiatement l'or correspondant de votre réserve.
+
+**3. Déclenchement du temps de construction**
+
+- **Démarrage uniquement à 100 %.** Le minuteur de construction ne se lance qu'une fois **tous les segments du niveau actuel achetés** (lorsque la jauge est pleine).
+- **Accélération du délai.** Pendant ce temps d'attente (qui passe de quelques minutes au début à plusieurs heures ou jours à haut niveau), vous continuez d'utiliser votre lampe au niveau actuel, et vous pouvez réduire le minuteur grâce aux **tickets d'accélération** (*Speed-up coupons*) ou aux **publicités quotidiennes**.
+
+**4. Accumulation de segments à l'avance**
+
+- **Impossible d'accumuler sur plusieurs niveaux.** Le jeu bloque l'achat de nouveaux segments dès que la barre du niveau en cours est remplie et que le compte à rebours est lancé.
+- **Gestion des réserves.** Vous devez attendre la fin du minuteur (ou le terminer avec des accélérateurs) pour valider le niveau supérieur et débloquer l'accès aux segments du niveau suivant. [[1](https://www.youtube.com/watch?v=_QSsOBihZb0\&t=36)]"
+T083,19/11/2026 21:33:05,APPROBATION_EXPLICITE,SYS-002.D.11.1.5.2,"11 - Équipement, lampe magique, affixes et calibration",27188,27193,C'est le modèle A
+T084,19/11/2026 21:35:51,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.6,"11 - Équipement, lampe magique, affixes et calibration",27262,27289,"**Dans *Legend of Mushroom*, le minuteur de la lampe suit une progression exponentielle allant de quelques secondes à plusieurs jours, que vous pouvez réduire grâce aux tickets d'accélération (5 minutes chacun), aux publicités quotidiennes et à l'aide de votre clan.**
+
+**1. Évolution de la durée de construction**
+
+- **Début de partie (Niveaux 1 à 10).** Les premiers délais sont très courts, passant de quelques secondes à quelques dizaines de minutes.
+- **Milieu de partie (Niveaux 11 à 20).** La durée grimpe progressivement de plusieurs heures à plus d'une journée complète par palier.
+- **Haut niveau (Niveaux 21 à 28+).** Le minuteur devient un véritable goulot d'étranglement, atteignant **plusieurs jours complets** à partir du niveau 24 (nécessitant plus de 1 200 tickets d'accélération pour être passé instantanément, comme le soulignent les joueurs sur [**Reddit Legend of Mushroom**](https://www.reddit.com/r/LegendOfMushroomGame/comments/1crdw6g/had_the_game_a_couple_weeks_and_im_just_realizing/)).
+
+**2. Tickets d'accélération (*Speed-Up Coupons*)**
+
+- **Valeur unitaire fixe.** Chaque ticket d'accélération standard retire exactement **5 minutes** au compte à rebours en cours.
+- **Cumul illimité.** Les tickets sont entièrement cumulables : un bouton dédié sur la fenêtre du minuteur permet d'utiliser d'un seul coup le nombre exact de tickets nécessaires pour terminer l'amélioration (ou de vider votre stock).
+- **Double usage.** Comme le rappelle [**Pocket Gamer**](https://www.pocketgamer.com/legend-of-mushroom/guide/), ces mêmes tickets servent également à accélérer les recherches technologiques (notamment lors de l'événement *Tech Rush*).
+
+**3. Publicités quotidiennes et aide de Clan**
+
+- **Quota et réduction des publicités.** Vous disposez d'un quota quotidien d'environ **4 publicités** sur le minuteur de la lampe, chacune retirant **30 minutes** (soit **2 heures** de réduction gratuite par jour au total, ou un simple clic si vous possédez le pass sans pub).
+- **Aide gratuite de la Famille (Clan).** En plus des publicités, vous pouvez solliciter l'aide des membres de votre clan via le bouton d'assistance sur le minuteur pour grappiller gratuitement plusieurs minutes supplémentaires à chaque niveau.
+
+**4. Fonctionnement hors ligne (Jeu fermé)**
+
+- **Écoulement continu.** *Legend of Mushroom* étant un jeu idle connecté en permanence aux serveurs, **le minuteur continue de s'écouler en temps réel** lorsque l'application est complètement fermée ou en arrière-plan.
+- **Validation au retour.** Si le délai arrive à zéro pendant votre absence, l'amélioration s'achève automatiquement et votre lampe passe immédiatement au niveau supérieur dès votre reconnexion"
+T085,19/11/2026 21:39:16,APPROBATION_EXPLICITE,SYS-002.D.11.1.6.5,"11 - Équipement, lampe magique, affixes et calibration",27560,27565,Je valide le modèle A
+T086,19/11/2026 21:45:32,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.7,"11 - Équipement, lampe magique, affixes et calibration",27646,27673,"**L'aide de la Famille (Clan) fonctionne par requête unique par amélioration en cours, permettant à vos alliés de réduire gratuitement votre minuteur de construction ou de recherche technologique tout en gagnant des points de contribution**.
+
+Voici le fonctionnement exact de chacun des quatre points dans *Legend of Mushroom* :
+
+**1. Limite par membre (Une aide par allié)**
+
+- **Une seule contribution par membre et par requête.** Chaque membre de votre Famille ne peut cliquer qu'une seule fois sur votre demande d'assistance dans l'onglet d'aide du clan.
+- **Récompense pour l'aidant.** Comme expliqué dans les guides sur le système familial sur [**YouTube**](https://www.youtube.com/watch?v=O618QuvVAmw), chaque allié qui clique sur « Aider » reçoit en retour des **points de contribution familiale** (utilisables dans la boutique de famille, soumise à un plafond quotidien de gains d'aide).
+
+**2. Durée retirée par assistance**
+
+- **Réduction fixe (ou pourcentage encadré) par clic.** Chaque aide validée par un membre retire immédiatement une portion fixe du temps restant sur le minuteur (généralement **1 % du temps total de construction avec un minimum fixe de quelques minutes** selon le niveau du bâtiment/lampe).
+- **Impact concret sur les longs minuteurs.** Sur les améliorations de lampe dépassant 24 à 72 heures, cumuler l'ensemble des aides de votre famille permet d'économiser plusieurs heures complètes sans dépenser de tickets d'accélération.
+
+**3. Nombre maximal d'assistances par niveau**
+
+- **Plafond lié au niveau de la Famille.** Il existe bien un **nombre maximal d'aides reçues par construction**, déterminé par le niveau de votre Famille (par exemple **10 à 20+ assistances maximum** selon le rang du clan).
+- **Clôture automatique de la requête.** Une fois ce plafond atteint (ou lorsque le minuteur tombe à zéro), votre demande disparaît automatiquement de la liste d'entraide de la Famille.
+
+**4. Renouvellement de la demande pour une même construction**
+
+- **Une seule demande par minuteur.** Vous ne pouvez publier qu'**une seule demande d'aide** pour un même cycle d'amélioration de lampe ou de technologie.
+- **Exception en cas de changement de clan.** Le bouton d'aide ne réapparaît pas sur un minuteur déjà sollicité, et quitter ou rejoindre une nouvelle Famille en cours de construction ne permet pas de relancer une seconde vague d'aides sur le même palier"
+T087,19/11/2026 21:49:18,APPROBATION_EXPLICITE,SYS-002.D.11.1.7.1,"11 - Équipement, lampe magique, affixes et calibration",27882,27887,Validation SYS-002.D.11.1.7.1 : modèle = simulation
+T088,19/11/2026 22:02:08,APPROBATION_EXPLICITE,SYS-002.D.11,"11 - Équipement, lampe magique, affixes et calibration",28058,28097,"Je choisis le modèle B.
+
+Je répond en détaillant la première question :
+Dans Legend of Mushroom, la Lampe Magique génère aléatoirement des pièces pour 10 emplacements d'équipement standards répartis autour de votre personnage.
+
+1. Les 10 emplacements générés par la Lampe Magique
+
+Chaque tirage de lampe attribue l'objet à l'un des 10 emplacements suivants :
+Colonne de gauche (Offensif et haut du corps)
+• Arme (Weapon). Détermine l'apparence visuelle de votre attaque en combat et apporte un fort bonus d'Attaque de base.
+• Casque / Chapeau (Helmet / Hat). Protège la tête de votre champignon.
+• Lunettes / Masque (Glasses / Mask). Accessoire facial offrant des statistiques de base et secondaires.
+• Épaulières (Shoulderpads). Renforce la défense et les points de vie.
+• Armure / T-shirt (Armor / T-shirt). Pièce principale du torse.
+Colonne de droite (Défensif et bas du corps)
+• Brassards / Protège-bras (Armpad). Protège les avant-bras.
+• Gants (Gloves). Équipement des mains.
+• Ceinture (Belt). Renforce la taille et les statistiques globales.
+• Pantalon / Genouillères (Pants / Kneepads). Pièce d'armure des jambes.
+• Chaussures / Bottes (Shoes / Boots). Complète l'ensemble de base.
+(Note : Vous pouvez enregistrer plusieurs préréglages d'équipement directement sur la fiche de personnage afin d'alterner rapidement entre vos ensembles PvP et PvE sans avoir à retrier vos pièces).
+
+2. Caractéristiques communes à ces 10 emplacements
+
+• Statistiques de base identiques. Contrairement à d'autres RPG où l'arme ne donne que de l'attaque et l'armure que de la défense, chaque pièce des 10 emplacements octroie simultanément un gain de PV, d'Attaque (ATQ) et de Défense (DÉF).
+• Statistiques secondaires (Affixes). À partir des raretés intermédiaires, chaque emplacement peut obtenir jusqu'à 2 statistiques secondaires aléatoires (Combo, Coup Critique, Contre-attaque, Étourdissement, Coup critique de compétence, Combo d'Acolyte, Coup critique d'acolyte,  Régénération, Evasion) qui définissent l'efficacité réelle de votre classe.
+• Amélioration indépendante des emplacements. Grâce au Fourneau Magique, vous renforcez le niveau de chaque emplacement lui-même avec des Pierres d'arcane et des Cristaux divins. Ce bonus d'amélioration reste attaché à l'emplacement même lorsque vous remplacez la pièce d'équipement tirée à la lampe.
+
+3. Les équipements spéciaux (Hors Lampe Magique)
+
+En parallèle de ces 10 emplacements classiques, votre personnage dispose de trois catégories d'équipement supplémentaires qui ne s'obtiennent jamais via la lampe :
+• Les Reliques (6 emplacements). Masques, Fossiles, Trésors, Statues, Colliers et Livres, obtenus dans la boutique de reliques via le donjon Caverne flamboyante.
+• L'Accessoire dorsal (1 emplacement). Les queues (Raton laveur, Loup, Renard), débloquées et améliorées grâce aux plumes du donjon Épreuve des ténèbres.
+• Les Artefacts et Montures. Équipés dans des emplacements dédiés et débloqués via des événements ou des conditions de progression spécifiques.
+Pour vérifier rapidement si une nouvelle pièce tirée à la lampe améliore votre équipement actuel selon vos affixes, vous pouvez utiliser l'outil comparateur disponible sur AllClash ou consulter le récapitulatif de progression sur Guides by Grace"
+T089,19/11/2026 22:10:37,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.10,"11 - Équipement, lampe magique, affixes et calibration",28460,28488,"Dans *Legend of Mushroom*, **le nombre d'affixes (statistiques secondaires soulignées) plafonne très rapidement à 2 maximum sur l'ensemble des équipements de la Lampe Magique**. [[1](https://www.allclash.com/best-setup-for-mage-class-mushroom-in-legend-of-mushroom/)]
+
+Contrairement à d'autres RPG où les raretés ultimes empilent 4 ou 5 lignes bonus, les 10 raretés de *Legend of Mushroom* plafonnent dès le palier *Bien* (*Well*) et font évoluer **la puissance des pourcentages** ainsi que **la probabilité d'obtenir ces affixes** plutôt que leur quantité.
+
+**1. Nombre d'affixes par rareté (Paliers 1 à 10)**
+
+| **Palier** | **Rareté (Jeu)**             | **Nombre d'affixes** | **Évolution des statistiques secondaires**                                                                     |
+| ---------- | ---------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **1**      | **Normal** (*Normal*)        | **0 affixe**         | Uniquement les statistiques de base (PV, ATQ, DÉF).                                                            |
+| **2**      | **Unique** (*Unique*)        | **0 à 1 affixe**     | Apparition occasionnelle d'une première statistique secondaire faible.                                         |
+| **3**      | **Bien** (*Well*)            | **1 à 2 affixes**    | Plafond atteint : il est déjà possible de tirer 2 affixes sur une pièce verte.                                 |
+| **4**      | **Rare** (*Rare*)            | **2 affixes**        | Deux statistiques secondaires garanties avec des valeurs en hausse.                                            |
+| **5**      | **Mythique** (*Mythic*)      | **2 affixes**        | Deux statistiques secondaires ; pourcentages renforcés.                                                        |
+| **6**      | **Épique** (*Epic*)          | **2 affixes**        | Deux statistiques secondaires ; début de l'optimisation de classe.                                             |
+| **7**      | **Légendaire** (*Legendary*) | **2 affixes**        | Deux statistiques secondaires ; pourcentages nettement plus élevés.                                            |
+| **8**      | **Immortel** (*Immortal*)    | **2 affixes**        | Deux statistiques secondaires ; très forts multiplicateurs de combat.                                          |
+| **9**      | **Suprême / Aurous**         | **2 affixes**        | Deux statistiques secondaires ; *Aurous* exige une condition spécifique d'affixe de classe pour être débloqué. |
+| **10**     | **Éternel** (*Eternal*)      | **2 affixes**        | Deux statistiques secondaires aux valeurs maximales du jeu ; déblocage conditionné comme *Aurous*.             |
+
+**2. Ce qui change réellement entre les raretés 3 et 10**
+
+- **Le plafond fixe de 2 lignes.** Comme le montre le vérificateur d'équipement sur [**AllClash**](https://www.allclash.com/best-setup-for-mage-class-mushroom-in-legend-of-mushroom/), chaque pièce d'armure ou arme ne possède jamais plus de **2 bonus secondaires soulignés** (Combo, Critique, Contre-attaque, Étourdissement, Évasion ou Régénération). [[1](https://www.allclash.com/best-setup-for-mage-class-mushroom-in-legend-of-mushroom/)]
+- **L'échelle des pourcentages.** À niveau de personnage égal, une pièce *Bien* (palier 3) confère environ **+0,5 %** par affixe, tandis qu'une pièce *Suprême*, *Aurous* ou *Éternel* (paliers 9 et 10) dépasse plusieurs pourcents par ligne, générant un écart massif une fois cumulé sur les **10 emplacements d'équipement**. [[1](https://www.allclash.com/best-setup-for-mage-class-mushroom-in-legend-of-mushroom/)]
+- **Les affixes exclusifs aux très hauts paliers (Aurous et Éternel).** En fin de jeu, le déblocage des raretés *Aurous* et *Éternel* est lié à des affixes avancés spécifiques à votre classe, et la fonction *Adjust* de la lampe permet de bannir jusqu'à 3 affixes indésirables pour sécuriser ces deux emplacements. [[1](https://guidesbygrace.uk/gear-lamp)]"
+T090,19/11/2026 22:15:33,APPROBATION_EXPLICITE,SYS-002.D.11.1.10.5,"11 - Équipement, lampe magique, affixes et calibration",28706,28711,SYS-002.D.11.1.10.5 — Validation : unicité des affixes = distinct
+T092,19/11/2026 22:34:02,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.10.7,"11 - Équipement, lampe magique, affixes et calibration",28927,28950,"**Dans *Legend of Mushroom*, la probabilité d'apparition des affixes secondaires suit une distribution uniforme (équiprobable) à l'intérieur du bassin d'affixes actifs, et c'est uniquement la mécanique de bannissement qui modifie ces chances en augmentant le niveau de la Lampe Magique.**
+
+Contrairement aux raretés d'équipement dont les taux exacts sont affichés en jeu, le jeu ne favorise pas un attribut secondaire par rapport à un autre lors d'un tirage standard. [[1](https://www.youtube.com/watch?v=3HAAYhYqQlw), [2](https://theriagames.com/guide/legend-of-mushroom-beginner-guide/)]
+
+**1. Équiprobabilité des affixes standards**
+
+- **Aucune pondération cachée.** Lorsqu'une pièce d'équipement génère ses deux statistiques secondaires (Combo, Coup Critique, Contre-attaque, Étourdissement, Coup critique de compétence, Combo d'Acolyte, Coup critique d'acolyte,  Régénération, Evasion), chaque statistique disponible dans le pool possède la même probabilité de sortir.
+- **Biais de perception des joueurs.** L'impression de tirer plus souvent des statistiques inutiles vient simplement du fait que sur 9 statistiques possibles, seule une combinaison précise de **2 affixes** correspond parfaitement à votre classe (par exemple *Critique + Combo* pour Archer ou *Critique + Contre-attaque* pour Guerrier).
+- **Indépendance des tirages.** Comme le confirme la communauté sur [**Reddit**](https://www.reddit.com/r/LegendofMushroom/comments/1e6whkx/lamps_chances_of_rarity/), ouvrir les lampes une par une ou par lots en mode automatique applique exactement les mêmes tirages aléatoires sans aucune modification de probabilité. [[1](https://www.reddit.com/r/LegendofMushroom/comments/1e6whkx/lamps_chances_of_rarity/)]
+
+**2. Impact réel du niveau de la Lampe Magique**
+
+- **Les probabilités de base n'évoluent pas.** Passer la lampe du niveau 5 au niveau 25 augmente uniquement la **rareté** de l'objet et la **valeur en pourcentage** de l'affixe, mais ne modifie pas la fréquence naturelle d'apparition d'un affixe donné. [[1](https://www.alucare.fr/legend-of-mushroom-lampe-familiers-et-montures/), [2](https://theriagames.com/guide/legend-of-mushroom-beginner-guide/)]
+- **Le seul levier de probabilité (Fonction *Adjust*).** Le niveau de la lampe influence vos chances uniquement via le déblocage progressif des emplacements d'exclusion (niveaux de lampe **12, 20 et 26**). [[1](https://guidesbygrace.uk/gear-lamp)]
+- **Calcul du gain mathématique.** En réduisant le bassin de 9 affixes possibles à seulement 6 grâce aux **3 bannissements** du niveau 26, la **probabilité d'obtenir votre paire exacte de 2,78 % (1 chance sur 36) à 6,67 % (1 chance sur 15)**. Cela représente un **gain mathématique multiplié par 2,4** sur chaque pièce tirée.
+
+**3. Cas particulier des raretés ultimes (Aurous et Éternel)**
+
+- **Affixes de classe conditionnels.** Comme l'indique le guide [**Guides by Grace**](https://guidesbygrace.uk/gear-lamp), l'obtention des pièces *Aurous* et *Éternel* en très haut niveau de lampe est soumise à des conditions d'affixes spécifiques liés à votre spécialisation de classe, ce qui oriente naturellement le tirage final vers des statistiques adaptées à votre archétype une fois ces paliers débloqués. [[1](https://guidesbygrace.uk/gear-lamp)]"
+T093,19/11/2026 22:38:48,APPROBATION_EXPLICITE,SYS-002.D.11.1.10.8,"11 - Équipement, lampe magique, affixes et calibration",29178,29183,Validation SYS-002.D.11.1.10.8 : conditions Aurous/Eternel = unlock_only
+T094,19/11/2026 22:42:37,APPROBATION_EXPLICITE,SYS-002.D.11.1.11.1,"11 - Équipement, lampe magique, affixes et calibration",29446,29451,Validation SYS-002.D.11.1.11.1 : distribution des raretés verrouillées = normalized
+T095,19/11/2026 22:48:33,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.11.2,"11 - Équipement, lampe magique, affixes et calibration",29672,29685,"**Oui, chacun des 10 emplacements d'équipement dispose d'une probabilité uniforme de 10 % (1 chance sur 10) lors d'un tirage de la Lampe Magique.**
+
+Contrairement aux raretés dont les pourcentages sont pondérés et affichés dans le tableau de la lampe, la sélection de l'emplacement obéit à un tirage aléatoire pur et équitable :
+
+**1. Distribution uniforme entre les 10 emplacements**
+
+- **Équiprobabilité parfaite (10 %).** Lorsqu'une charge de lampe génère un objet, le jeu tire d'abord la rareté selon la table de probabilités de votre niveau de lampe, puis sélectionne l'un des **10 emplacements** (Arme, Casque, Lunettes, Épaulières, Armure, Brassards, Gants, Ceinture, Pantalon, Chaussures) avec une probabilité identique de **10 %** chacun. [[1](https://www.deconstructoroffun.com/blog/2024/4/15/the-magic-of-legend-of-mushroom), [2](https://www.youtube.com/watch?v=3HAAYhYqQlw\&t=29)]
+- **Aucune pondération par pièce.** L'arme n'est pas plus rare que les bottes ou la ceinture, et le niveau de la lampe ne modifie jamais la répartition entre les emplacements.
+- **Indépendance des tirages.** Comme le confirment les analyses de fonctionnement de la lampe sur [**Deconstructor of Fun**](https://www.deconstructoroffun.com/blog/2024/4/15/the-magic-of-legend-of-mushroom) et les retours de la communauté sur [**Reddit Legend of Mushroom**](https://www.reddit.com/r/LegendofMushroom/comments/1e6whkx/lamps_chances_of_rarity/), chaque tirage est totalement indépendant du précédent, qu'il soit effectué manuellement ou par lots via le mode automatique. [[1](https://www.deconstructoroffun.com/blog/2024/4/15/the-magic-of-legend-of-mushroom), [2](https://www.reddit.com/r/LegendofMushroom/comments/1e6whkx/lamps_chances_of_rarity/)]"
+T096,19/11/2026 22:53:15,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.1,"11 - Équipement, lampe magique, affixes et calibration",29868,29873,Validation SYS-002.D.11.1.12.1 : génération des statistiques de base = random_range
+T097,19/11/2026 23:02:00,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.2,"11 - Équipement, lampe magique, affixes et calibration",30047,30052,Modèle A
+T098,19/11/2026 23:05:02,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.11.1.12.3,"11 - Équipement, lampe magique, affixes et calibration",30213,30218,c'est une distribution uniforme
+T099,20/11/2026 10:21:00,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.4,"11 - Équipement, lampe magique, affixes et calibration",30319,30338,"Modèle A.
+
+Précisions :
+
+**Les valeurs plates de PV, ATQ et DÉF affichées sur les équipements dans *Legend of Mushroom* sont toujours des nombres entiers.** Le jeu n'affiche jamais de décimales pour les statistiques de base plates, que ce soit sur la fiche de l'objet ou dans l'écran de comparaison de la Lampe Magique.
+
+**1. Affichage en nombres entiers et grands nombres**
+
+- **Arrondi à l'entier sur l'équipement.** Lors du calcul interne à partir du niveau d'objet, de la rareté et de l'emplacement, le jeu arrondit systématiquement le résultat pour afficher un **nombre entier exact** sur la carte de l'objet (ex. `ATQ +12 450`, `PV +98 200`, `DÉF +4 120`).
+- **Notation abrégée à haut niveau.** Dès que les valeurs dépassent les dizaines de milliers ou les millions en milieu/fin de jeu, l'interface bascule sur des suffixes abrégés (**K** pour mille, **M** pour million, **B** pour milliard, **T** pour billion, puis AA, AB, etc.) avec deux décimales d'affichage (par exemple `14.52M` = `14 520 000`), mais la valeur brute sous-jacente reste un entier.
+
+**2. Distinction avec les statistiques en pourcentage**
+
+- **Les affixes et bonus utilisent des décimales.** Contrairement aux valeurs plates (PV, ATQ, DÉF), les **affixes secondaires** de l'équipement (ex. `Combo +3.45 %`, `Critique +2.8 %`) ainsi que les bonus passifs des acolytes, reliques ou statues comportent régulièrement **1 à 2 décimales**.
+- **Calcul en combat.** Lors de l'application des multiplicateurs en pourcentage sur les statistiques entières de base, le moteur de combat effectue les calculs en virgule flottante avant d'afficher des **dégâts entiers** à l'écran"
+T100,20/11/2026 10:42:24,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.5,"11 - Équipement, lampe magique, affixes et calibration",30524,30529,Validation SYS-002.D.11.1.12.5 : modèle de plages des statistiques par emplacement = same
+T101,20/11/2026 10:44:21,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.6,"11 - Équipement, lampe magique, affixes et calibration",30748,30753,Validation SYS-002.D.11.1.12.6 : modèle de progression des plages statistiques = anchors
+T102,20/11/2026 10:48:34,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.6.2,"11 - Équipement, lampe magique, affixes et calibration",31040,31045,Validation SYS-002.D.11.1.12.6.2 : coefficients de rareté = single
+T103,20/11/2026 10:59:00,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.6.4,"11 - Équipement, lampe magique, affixes et calibration",31372,31377,"Validation SYS-002.D.11.1.12.6.4 : quantification des bornes = inward. Formalise cette décision dans le GDD, puis soumets les contraintes de croissance à validation avant de commencer la calibration numérique"
+T104,20/11/2026 11:09:03,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.6.3,"11 - Équipement, lampe magique, affixes et calibration",31614,31619,Validation SYS-002.D.11.1.12.6.3 : contraintes de croissance = strict
+T105,20/11/2026 18:23:12,APPROBATION_EXPLICITE,SYS-002.D.11.1.12.7.2,"11 - Équipement, lampe magique, affixes et calibration",31898,31903,Validation SYS-002.D.11.1.12.7.2 : stratégie de calibration = provisional
+T106,20/11/2026 18:27:17,APPROBATION_EXPLICITE,SYS-002.D.11.1.13.2,"11 - Équipement, lampe magique, affixes et calibration",32248,32253,Validation SYS-002.D.11.1.13.2 : dépendance des valeurs d'affixes = rarity_only
+T107,20/11/2026 18:30:49,APPROBATION_EXPLICITE,SYS-002.D.11.1.13.3,"11 - Équipement, lampe magique, affixes et calibration",32649,32654,Validation SYS-002.D.11.1.13.3 : distribution numérique des affixes = uniform
+T108,20/11/2026 18:56:53,APPROBATION_EXPLICITE,SYS-002.D.11.1.13.4,"11 - Équipement, lampe magique, affixes et calibration",33054,33059,Je valide
+T109,20/11/2026 19:24:17,APPROBATION_EXPLICITE,SYS-002.D.11.1.14.1,"11 - Équipement, lampe magique, affixes et calibration",33318,33323,Oui je valide
+T110,20/11/2026 20:01:40,APPROBATION_EXPLICITE,SYS-002.D.11.1.15.1,"11 - Équipement, lampe magique, affixes et calibration",33614,33619,Validation SYS-002.D.11.1.15.1 : distribution du nombre d'affixes = weighted_lookup
+T111,20/11/2026 20:33:35,APPROBATION_EXPLICITE,SYS-002.D.11.1.17.1,"11 - Équipement, lampe magique, affixes et calibration",34136,34141,Validation SYS-002.D.11.1.17.1 : architecture de configuration Unity = hybrid
+T113,20/11/2026 21:10:02,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.12.1,"12 - Classes, spécialisations et passifs",35560,35565,Je souhaite rester assez fidèle avec l'originale mais tout en nous laissant libre de modifier certaines mécaniques si nécessaire ou plus cohérent
+T114,20/11/2026 23:05:07,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.12.2,"12 - Classes, spécialisations et passifs",35768,35837,"Je n'ai pas de capture d'écran, le rendu est pas assez clair et compréhensible.
+
+Je vais faire un listing des différentes informations :
+
+Dans *Legend of Mushroom*, **tous les joueurs débutent en tant que Champignon (*Shroomie*) au niveau 1, évoluent en Aventurier (*Adventurer*) au niveau 15, puis choisissent au niveau 30 l'une des 4 classes principales** (Combattant/Guerrier, Archer, Mage ou Dompteur/Channeler), chacune se divisant en deux branches spécialisées au niveau 50 jusqu'à l'**Éveil** (et la Transcendance en très haut niveau). [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://mobi.gg/en/tips/legend-of-mushroom-class/), [3](https://www.youtube.com/watch?v=NagLq0be1SY\&t=1)]
+
+Voici l'arbre complet des classes et de leurs évolutions successives (Niveaux 30 → 50 → 70 → 100 → Éveil) : [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+
+**1. Branche Combattant / Guerrier (*Warrior*) — Mêlée, PV et Contre-attaque**
+
+- **Niveau 30 :** Combattant / Guerrier (*Warrior*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://mobi.gg/fr/astuces/classes-legend-of-mushroom/)]
+- **Branche A (Défense, boucliers et résistance) :**
+  - **Niveau 50 :** Épéiste (*Swordsman*)
+  - **Niveau 70 :** Porteur de Claymore / Grand Maître de l'Épée (*Claymore Wielder*)
+  - **Niveau 100 :** Maître d'armes / Tête de l'Épée (*Swordmaster*)
+  - **Éveil :** Saint Martial (*Martial Sage*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://mobi.gg/fr/astuces/classes-legend-of-mushroom/)]
+- **Branche B (Dégâts bruts et contre-attaque) :**
+  - **Niveau 50 :** Guerrier à la hache / Samouraï à la hache (*Axe Warrior*)
+  - **Niveau 70 :** Berserker (*Berserker*)
+  - **Niveau 100 :** Belliciste / Seigneur de guerre (*Warmonger*)
+  - **Éveil :** Porteur de guerre / Divin (*Warbringer*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://mobi.gg/fr/astuces/classes-legend-of-mushroom/), [3](https://mobi.gg/en/tips/legend-of-mushroom-class/)]
+
+**2. Branche Archer (*Archer*) — Distance, Combo et Coups Critiques**
+
+- **Niveau 30 :** Archer (*Archer*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+- **Branche A (Coups critiques et rafales à l'arc) :**
+  - **Niveau 50 :** Tireur d'ombre (*Shadow Sniper*)
+  - **Niveau 70 :** Tireur d'élite (*Sharpshooter / Marksman*)
+  - **Niveau 100 :** Chasseur d'ombre (*Shadowhunter*)
+  - **Éveil :** Chasseur sacré (*Sacred Hunter*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://www.bluestacks.com/fr/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-tier-list-fr.html), [3](https://mobi.gg/en/tips/legend-of-mushroom-class/), [4](https://www.bluestacks.com/fr/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-fr.html)]
+- **Branche B (Vitesse d'attaque et combos à l'arbalète) :**
+  - **Niveau 50 :** Arbalétrier du vent (*Wind Crossbower*)
+  - **Niveau 70 :** Double arbalétrier (*Dual Crossbower*)
+  - **Niveau 100 :** Dieu des flèches (*Arrowgod*)
+  - **Éveil :** Monarque des panaches (*Plume Monarch*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://www.bluestacks.com/fr/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-tier-list-fr.html), [3](https://www.bluestacks.com/fr/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-fr.html)]
+
+**3. Branche Mage (*Mage*) — Compétences, Étourdissement et Soins**
+
+- **Niveau 30 :** Mage (*Mage*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+- **Branche A (Contrôle, étourdissement et régénération) :**
+  - **Niveau 50 :** Guérisseur (*Healer*)
+  - **Niveau 70 :** Chronomancien (*Chronomancer*)
+  - **Niveau 100 :** Guide sacré (*Holy Guide*)
+  - **Éveil :** Prophète (*Prophet*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html), [2](https://www.bluestacks.com/fr/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-tier-list-fr.html)]
+- **Branche B (Dégâts critiques de compétences) :**
+  - **Niveau 50 :** Lanceur de sorts (*Spellcaster*)
+  - **Niveau 70 :** Prêtre des tempêtes (*Storm Priest*)
+  - **Niveau 100 :** Évêque (*Bishop*)
+  - **Éveil :** Seigneur des ténèbres (*Darklord*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+
+**4. Branche Dompteur / Canaliseur d'esprits (*Spirit Channeler*) — Dégâts d'acolytes**
+
+- **Niveau 30 :** Canaliseur d'esprits (*Spirit Channeler*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+- **Branche A (Renforcement des acolytes et vitesse) :**
+  - **Niveau 50 :** Dompteur de bêtes (*Beast Tamer*)
+  - **Niveau 70 :** Chasseur d'âmes (*Soul Hunter*)
+  - **Niveau 100 :** Maître des âmes animales (*Beastsoul Master*)
+  - **Éveil :** Maître des bêtes (*Beastmaster*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+- **Branche B (Invocations et dégâts sur la durée) :**
+  - **Niveau 50 :** Mage squelette (*Skeleton Mage*)
+  - **Niveau 70 :** Berger des esprits (*Spirit Shepherd*)
+  - **Niveau 100 :** Maître nécromancien (*Necro Master*)
+  - **Éveil :** Esprit suprême (*Supreme Spirit*) [[1](https://www.bluestacks.com/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-en.html)]
+
+*(Note : Vous pouvez changer librement de classe et d'évolution à tout moment en jeu moyennant **4 000 diamants**, ce qui permet par exemple de monter avec un Mage en début de partie avant de basculer vers un Archer ou un Guerrier à haut niveau).* [[1](https://www.allclash.com/the-best-class-for-you-in-legend-of-mushroom/), [2](https://www.youtube.com/watch?v=B1xrmB_Sfhc)]"
+T115,21/11/2026 17:09:43,EXIGENCE_OU_RECTIFICATION_PROPRIETAIRE,SYS-002.D.12.3,"12 - Classes, spécialisations et passifs",36209,36249,"Dans *Legend of Mushroom*, **la branche Guerrier (*Warrior*) repose sur une compétence active de classe évolutive (qui inflige des dégâts de zone et amplifie la contre-attaque sur les ennemis touchés) ainsi que sur l'empilement progressif de 5 compétences passives aux paliers 30, 50, 70 et 100, culminant avec l'Éveil**.
+
+---
+
+**1. Évolution de la Compétence Active de Classe**
+
+Contrairement aux 5 emplacements de compétences invocables au gacha, la compétence active propre à votre classe s'améliore automatiquement à chaque promotion :
+
+- **Niveau 30 (Combattant / Guerrier) :** Inflige des dégâts physiques de zone (AoE) devant vous et augmente légèrement les dégâts subis par les cibles.
+- **Niveaux 50, 70 et 100 (Épéiste → Maître d'armes / Guerrier à la hache → Belliciste) :** Le multiplicateur de dégâts de zone augmente à chaque palier, et la compétence applique un débuff de **5 secondes** qui augmente les **dégâts de contre-attaque subis par les ennemis à portée de +60 %** (ou réduit leur résistance aux dégâts de contre-attaque de 40 % selon les équilibrages de patch), comme détaillé sur [**BlueStacks**](https://www.bluestacks.com/fr/blog/game-guides/legend-of-the-mushroom-brave-3000-free-draws/lotmb-classes-guide-fr.html).
+- **Éveil – Branche Tank (*Saint Martial / Martial Sage*) :** La durée du débuff de contre-attaque passe de 5 à **8 secondes**, chaque contre-attaque inflige des dégâts bonus basés sur les PV actuels de la cible, et vous régénérez continuellement **15 % de vos PV max pendant 5 secondes**.
+- **Éveil – Branche DPS (*Porteur de guerre / Warbringer*) :** La durée du débuff passe également à **8 secondes**, et pendant **5 secondes**, vos contre-attaques **projettent les cibles dans les airs** (interrompant leurs actions) tout en convertissant une partie de votre Défense en Attaque et inversement.
+
+---
+
+**2. Progression des Compétences Passives par Palier**
+
+À chaque changement de rang, votre personnage conserve ses passifs précédents et débloque un nouveau passif permanent (pour un total de **5 passifs actifs simultanément** au niveau 100) :
+
+**Tronc commun (Niveau 30)**
+
+- **Passif 1 (Combattant) :** Augmente le **taux de contre-attaque** de base (+15 % à +30 %) et les **dégâts de contre-attaque** (+30 %).
+
+**Branche A — Tank, Boucliers et Survie (*Épéiste → Claymore → Maître d'armes → Saint Martial*)**
+
+- **Niveau 50 (*Épéiste*) :** **Passif 2** — Augmente la **Défense globale de +30 %**.
+- **Niveau 70 (*Porteur de Claymore*) :** **Passif 3** — Octroie une **réduction des dégâts subis de +15 %** en permanence.
+- **Niveau 100 (*Maître d'armes / Swordmaster*) :** **Passifs 4 et 5** — Restaure automatiquement **8 % des PV max toutes les 5 secondes** et génère toutes les 10 secondes un **bouclier absorbant 8 % des PV max pendant 5 secondes** (comme analysé dans les guides de build sur [**YouTube**](https://www.youtube.com/watch?v=bAHltPlzOlM)).
+- **Éveil (*Saint Martial*) :** Renforce l'ensemble des statistiques de survie (PV, Défense, Résistance critique) et amplifie les soins et boucliers générés.
+
+**Branche B — Dégâts Bruts et Contre-attaque (*Guerrier à la hache → Berserker → Belliciste → Porteur de guerre*)**
+
+- **Niveau 50 (*Guerrier à la hache*) :** **Passif 2** — Augmente l'**Attaque globale** et la **Défense** de base.
+- **Niveau 70 (*Berserker*) :** **Passif 3** — Octroie un **bonus d'Attaque proportionnel aux PV manquants** (environ +3 % d'ATQ pour chaque tranche de 10 % de PV perdus), transformant les fins de combat en rafales dévastatrices.
+- **Niveau 100 (*Belliciste / Warmonger*) :** **Passifs 4 et 5** — Augmente massivement le **multiplicateur de dégâts de contre-attaque**, renforce la Défense et ajoute un bonus de dégâts supplémentaires lorsque vos PV passent sous un certain seuil, comme détaillé dans les builds sur [**YouTube**](https://www.youtube.com/watch?v=pfHjIFNRC9c).
+- **Éveil (*Porteur de guerre / Warbringer*) :** Débloque la synergie d'éveil convertissant mutuellement l'Attaque et la Défense lors de l'activation de la compétence de classe"
+T116,21/11/2026 17:14:46,APPROBATION_EXPLICITE,SYS-002.D.12.3.4,"12 - Classes, spécialisations et passifs",36725,36730,Validation SYS-002.D.12.3.4 : modèle de débuff Guerrier = configurable
+T117,21/11/2026 17:17:56,APPROBATION_EXPLICITE,SYS-002.D.12.3.7,"12 - Classes, spécialisations et passifs",37206,37211,Validation SYS-002.D.12.3.7 : profil des passifs Guerrier = patch_reference
+T118,21/11/2026 17:21:50,APPROBATION_EXPLICITE,SYS-002.D.12.3.11.1,"12 - Classes, spécialisations et passifs",37697,37702,Validation SYS-002.D.12.3.11.1 : profils d'Éveil Guerrier = configurable
+T119,21/11/2026 17:24:15,APPROBATION_EXPLICITE,SYS-002.D.12.3.15.1,"12 - Classes, spécialisations et passifs",38070,38075,Validation SYS-002.D.12.3.15.1 : ciblage du bonus de vitesse d'attaque Warbringer = configurable
+T120,21/11/2026 17:27:34,APPROBATION_EXPLICITE,SYS-002.D.12.3.15.5,"12 - Classes, spécialisations et passifs",38375,38380,"Validation SYS-002.D.12.3.15.5 : déclenchement réflexion = hit ; rafraîchissement = unique ; premières échéances périodiques = delayed. Formalise les trois décisions dans le GDD et poursuis l'audit des mécaniques Guerrier restantes, notamment la catégorisation des dégâts réfléchis, leur valeur de référence et les dégâts proportionnels aux PV de Martial Sage"
+T121,21/11/2026 17:31:10,APPROBATION_EXPLICITE,SYS-002.D.12.3.19.1,"12 - Classes, spécialisations et passifs",38913,38918,Validation SYS-002.D.12.3.19.1 : catégorie des dégâts réfléchis = versioned
+T122,21/11/2026 17:34:41,APPROBATION_EXPLICITE,SYS-002.D.12.3.19.5,"12 - Classes, spécialisations et passifs",39446,39451,Validation SYS-002.D.12.3.19.5 : contrat de résolution des dégâts Guerrier = proposed
+T123,21/11/2026 17:38:13,APPROBATION_EXPLICITE,SYS-002.D.12.3.24.1,"12 - Classes, spécialisations et passifs",39902,39907,Validation SYS-002.D.12.3.24.1 : stratégie de calibration Guerrier = provisional
+T124,21/11/2026 17:41:19,APPROBATION_EXPLICITE,SYS-002.D.12.3,"12 - Classes, spécialisations et passifs",40298,40303,Je valide
+T125,21/11/2026 17:44:17,APPROBATION_EXPLICITE,SYS-002.D.12.4.1,"12 - Classes, spécialisations et passifs",40455,40460,Oui je valide
+T126,21/11/2026 17:46:44,APPROBATION_EXPLICITE,SYS-002.D.12.4.5,"12 - Classes, spécialisations et passifs",40917,40922,Validation SYS-002.D.12.4.5 : sémantique des passifs communs Archer = additive
+T127,21/11/2026 17:51:44,APPROBATION_EXPLICITE,SYS-002.D.12.4.12.1,"12 - Classes, spécialisations et passifs",41584,41589,Validation SYS-002.D.12.4.12.1 : modèle multi-projectiles Archer = reference
+T128,21/11/2026 17:55:15,APPROBATION_EXPLICITE,SYS-002.D.12.4.19.1,"12 - Classes, spécialisations et passifs",42268,42273,Validation SYS-002.D.12.4.19.1 : coefficients des projectiles Archer = full
+T129,21/11/2026 17:59:47,APPROBATION_EXPLICITE,SYS-002.D.12.4.23.1,"12 - Classes, spécialisations et passifs",42824,42829,Validation SYS-002.D.12.4.23.1 : compétences actives et Éveils Archer = reference
+T130,21/11/2026 18:06:35,APPROBATION_EXPLICITE,SYS-002.D.12.4.29.1,"12 - Classes, spécialisations et passifs",43396,43401,"Validation SYS-002.D.12.4.29.1 : passifs Sacred Hunter = versioned. Formalise cette décision dans le GDD, puis finalise les règles temporelles et l'audit fonctionnel de l'Archer en vue de son passage à functionally_specified"
+T131,21/11/2026 18:10:00,APPROBATION_EXPLICITE,SYS-002.D.12.4.34.1,"12 - Classes, spécialisations et passifs",44023,44028,je valide
+T132,21/11/2026 18:12:49,APPROBATION_CONTEXTUELLE,SYS-002.D.12.5.3,"12 - Classes, spécialisations et passifs",44208,44213,Oui
+T133,21/11/2026 18:16:58,APPROBATION_EXPLICITE,SYS-002.D.12.5.6.1,"12 - Classes, spécialisations et passifs",44559,44564,Je valide
+T134,21/11/2026 18:24:48,APPROBATION_EXPLICITE,SYS-002.D.12.5.11.1,"12 - Classes, spécialisations et passifs",45157,45162,Validation SYS-002.D.12.5.11.1 : contrats des passifs Prophet = reference
+T135,21/11/2026 18:35:32,APPROBATION_EXPLICITE,SYS-002.D.12.5.19.1,"12 - Classes, spécialisations et passifs",45728,45733,Validation SYS-002.D.12.5.19.1 : passifs Darklord = versioned
+T136,21/11/2026 18:38:33,APPROBATION_EXPLICITE,SYS-002.D.12.5.25.1,"12 - Classes, spécialisations et passifs",46344,46349,Validation SYS-002.D.12.5.25.1 : compétences actives et Éveils Mage = versioned
+T137,21/11/2026 18:41:36,APPROBATION_EXPLICITE,SYS-002.D.12.5.29.1,"12 - Classes, spécialisations et passifs",46793,46798,"Validation SYS-002.D.12.5.29.1 : clôture fonctionnelle Mage approuvée. Enregistre SYS-002.D.12.5 = functionally_specified avec calibration_pending, not_started et not_executed"
+T138,21/11/2026 18:50:10,APPROBATION_EXPLICITE,SYS-002.D.12.6.7.1,"12 - Classes, spécialisations et passifs",47214,47219,Validation SYS-002.D.12.6.7.1 : cartographie Spirit Channeler = provisional
+T139,21/11/2026 19:00:20,APPROBATION_EXPLICITE,SYS-002.D.12.6.13.1,"12 - Classes, spécialisations et passifs",47805,47810,Validation SYS-002.D.12.6.13.1 : passifs communs Spirit Channeler = versioned
+T140,21/11/2026 19:05:52,APPROBATION_EXPLICITE,SYS-002.D.12.6.21.1,"12 - Classes, spécialisations et passifs",48512,48517,Validation SYS-002.D.12.6.21.1 : passifs Beastmaster P3/P4/P5 = guide
+T141,21/11/2026 19:13:05,APPROBATION_EXPLICITE,SYS-002.D.12.6.29.1,"12 - Classes, spécialisations et passifs",49147,49152,Validation SYS-002.D.12.6.29.1 : passifs Supreme Spirit P3/P4/P5 = reference
+T142,21/11/2026 19:19:23,APPROBATION_EXPLICITE,SYS-002.D.12.6.36.1,"12 - Classes, spécialisations et passifs",49744,49749,Validation SYS-002.D.12.6.36.1 : compétences et Éveils Spirit Channeler = reference
+T143,21/11/2026 19:25:55,APPROBATION_EXPLICITE,SYS-002.D.12.6.44.1,"12 - Classes, spécialisations et passifs",50427,50432,"Validation SYS-002.D.12.6.44.1 : clôture fonctionnelle de Spirit Channeler approuvée. Enregistre SYS-002.D.12.6 = functionally_specified, avec unlock_calibration_pending, catalog_pending, calibration_pending, not_started et not_executed. Réalise ensuite une revue consolidée des quatre classes et identifie le prochain chantier prioritaire du GDD"
+T144,21/11/2026 19:32:14,APPROBATION_EXPLICITE,SYS-002.D.13,13 - Moteur de combat partagé et contrats transversaux,50790,50795,"Je valide l'ouverture de SYS-002.D.13 — Shared Combat Engine Specification. Commence par SYS-002.D.13.1 : audit et formalisation du modèle d'acteurs, d'actions et d'événements, avec causalité, contrats, invariants et tests. Ne commence pas l'implémentation"
+T145,21/11/2026 19:40:09,APPROBATION_EXPLICITE,SYS-002.D.13.1.9.1,13 - Moteur de combat partagé et contrats transversaux,51814,51819,"Je valide SYS-002.D.13.1.9.1 : les douze contrats CORE-001 à CORE-012 du modèle partagé d'acteurs, d'actions, d'opérations programmées et d'événements. Enregistre D.13.1 = functionally_specified, avec not_started et not_executed. Passe ensuite à SYS-002.D.13.2 — Action Lifecycle, en approfondissant les transitions, annulations partielles, engagements de ressources et impacts différés, sans implémentation"
+T146,21/11/2026 19:43:42,APPROBATION_EXPLICITE,SYS-002.D.13.2.10.1,13 - Moteur de combat partagé et contrats transversaux,52736,52741,"Je valide SYS-002.D.13.2.10.1 : les seize contrats LIFE-001 à LIFE-016 du cycle de vie des actions. Enregistre SYS-002.D.13.2 = functionally_specified avec not_started et not_executed. Passe ensuite à SYS-002.D.13.3 — Combat Scheduler : audite l'ordre total des phases, les collisions au même timestamp, le traitement des réactions, les politiques RNG et le déterminisme, sans implémentation"
+T147,21/11/2026 19:48:59,APPROBATION_EXPLICITE,SYS-002.D.13.3.9.1,13 - Moteur de combat partagé et contrats transversaux,53559,53564,"Je valide SYS-002.D.13.3.9.1 : les dix-huit contrats SCHED-001 à SCHED-018 du Combat Scheduler. Enregistre SYS-002.D.13.3 = functionally_specified avec not_started et not_executed. Passe ensuite à SYS-002.D.13.4 — Damage Resolution : audite le pipeline des dégâts, les catégories de dégâts, les critiques, la Défense, les résistances, les boucliers, les immunités, les dégâts proportionnels aux PV et les règles d'arrondi, sans implémentation"
+T148,21/11/2026 19:54:12,APPROBATION_EXPLICITE,SYS-002.D.13.4.14.1,13 - Moteur de combat partagé et contrats transversaux,54827,54832,"Je valide SYS-002.D.13.4.14.1 : les vingt-quatre contrats DMG-001 à DMG-024 du Damage Resolution Engine. Enregistre SYS-002.D.13.4 = functionally_specified avec defense_calibration_pending, damage_mode_calibration_pending, calibration_pending, not_started et not_executed. Passe ensuite à SYS-002.D.13.5 — Modifier & Snapshot Engine : audite l'agrégation des modificateurs, les groupes, les priorités, les snapshots offensifs, les effets temporaires, les rafraîchissements et la persistance après mort, sans implémentation"
+T149,21/11/2026 22:22:26,APPROBATION_EXPLICITE,SYS-002.D.13.5,13 - Moteur de combat partagé et contrats transversaux,55942,55947,Oui je valide
+T150,21/11/2026 22:34:39,APPROBATION_EXPLICITE,SYS-002.D.13.6,13 - Moteur de combat partagé et contrats transversaux,57037,57042,Je valide
